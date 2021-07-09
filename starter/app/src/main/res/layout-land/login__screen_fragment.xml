@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".screens.Login_Screen">
+
+
+    <data>
+        <variable
+            name="loginScreenViewModel"
+            type="com.udacity.shoestore.screens.LoginScreenViewModel" />
+    </data>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    android:id="@+id/login_layout"
+    >
+
+
+    <TextView
+        android:id="@+id/userNameTextView"
+        android:layout_width="135dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="4dp"
+        android:text="@string/userNameTextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBaseline_toBaselineOf="@+id/userNameEdit"
+        app:layout_constraintStart_toStartOf="@+id/passwordTextView" />
+
+    <TextView
+        android:id="@+id/passwordTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/passwordTextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBaseline_toBaselineOf="@+id/passwordEdit"
+        app:layout_constraintStart_toStartOf="@+id/confirmPasswordText" />
+
+    <EditText
+        android:id="@+id/passwordEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/passwordEditHint"
+        android:text="@{loginScreenViewModel.password}"
+        app:layout_constraintBottom_toBottomOf="@+id/confirmPasswordText"
+        app:layout_constraintEnd_toEndOf="@+id/confirmPasswordEdit"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/confirmPasswordEdit"
+        app:layout_constraintTop_toBottomOf="@+id/userNameEdit"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/userNameEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="116dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@={loginScreenViewModel.userName}"
+        android:hint="@string/userNameHint"
+        app:layout_constraintEnd_toEndOf="@+id/passwordEdit"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/passwordEdit"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="170dp"
+        android:text="@string/loginButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/signUpButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/signUpButton"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:text="@string/signUpButton"
+        android:onClick="@{()->loginScreenViewModel.creatingNewAccount()}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/loginButton"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEdit"
+        app:layout_constraintVertical_bias="0.686" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="@string/welcomeTextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toTopOf="@+id/userNameEdit"
+        app:layout_constraintEnd_toEndOf="@+id/userNameEdit"
+        app:layout_constraintHorizontal_bias="0.694"
+        app:layout_constraintStart_toStartOf="@+id/userNameTextView" />
+
+    <EditText
+        android:id="@+id/confirmPasswordEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="@{loginScreenViewModel.passwordConfirmation}"
+        android:hint="@string/passwordEditHint"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/signUpButton"
+        app:layout_constraintEnd_toEndOf="@+id/signUpButton" />
+
+    <TextView
+        android:id="@+id/confirmPasswordText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="148dp"
+        android:text="@string/confirmPasswordText"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:visibility="invisible"
+        app:layout_constraintBaseline_toBaselineOf="@+id/confirmPasswordEdit"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

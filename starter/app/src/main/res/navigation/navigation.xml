@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/login_Screen">
+
+    <fragment
+        android:id="@+id/login_Screen"
+        android:name="com.udacity.shoestore.screens.Login_Screen"
+        android:label="login__screen_fragment"
+        tools:layout="@layout/login__screen_fragment" >
+        <action
+            android:id="@+id/action_login_Screen_to_welcome_Screen"
+            app:destination="@id/welcome_Screen" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcome_Screen"
+        android:name="com.udacity.shoestore.screens.Welcome_Screen"
+        android:label="fragment_welcome__screen"
+        tools:layout="@layout/fragment_welcome__screen" />
+</navigation>
