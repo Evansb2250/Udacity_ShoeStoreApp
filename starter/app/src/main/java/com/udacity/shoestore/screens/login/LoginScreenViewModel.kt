@@ -66,8 +66,6 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
     }
 
 
-
-
     private fun alertUserRequestFailed() { _guiMessage.value = "Access Denied!!" }
 
     private fun createNewUser() {

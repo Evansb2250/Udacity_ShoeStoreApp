@@ -15,6 +15,9 @@ import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.LoginScreenFragmentBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
+//TODO create email format validation
+//TODO create constraints for passwords
+
 class Login_Screen : Fragment() {
 
     private lateinit var viewModelFactory: LoginScreenViewModelFactory
@@ -69,6 +72,7 @@ class Login_Screen : Fragment() {
         return binding.root
     }
 
+
     private fun setUpViewModel() {
         viewModelFactory = LoginScreenViewModelFactory()
         viewModel = ViewModelProvider(this, viewModelFactory).get(LoginScreenViewModel::class.java)
@@ -93,7 +97,7 @@ class Login_Screen : Fragment() {
                 //attempt to log a user in
                 binding.loginButton -> {getDataFromGUI()}
                 //ask user for to enter username, password and validate password
-                binding.signUpButton ->{
+                binding.signUpButton -> {
                     viewModel.creatingNewUserState()
                     viewModel.clearVariableData()
                     clearEditTexts()
@@ -144,7 +148,7 @@ class Login_Screen : Fragment() {
     }
 
     private fun logUserIn(){
-        findNavController().navigate(com.udacity.shoestore.screens.login.Login_ScreenDirections.actionLoginScreenToWelcomeScreen())
+        findNavController().navigate(Login_ScreenDirections.actionLoginScreenToWelcomeScreen())
     }
 
 }
