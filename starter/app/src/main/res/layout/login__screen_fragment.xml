@@ -44,7 +44,7 @@
             android:layout_marginEnd="40dp"
             android:layout_marginBottom="152dp"
             android:ems="10"
-            android:text="@{viewModel.userName}"
+            android:text=""
             android:hint="@string/userNameHint"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/loginButton"
@@ -62,7 +62,7 @@
             android:layout_marginEnd="40dp"
             android:ems="10"
             android:hint="@string/passwordEditHint"
-            android:text="@{viewModel.password}"
+            android:text=""
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -104,7 +104,7 @@
             android:ems="10"
             android:hint="@string/passwordEditHint"
             android:inputType="textPassword"
-            android:text="@{viewModel.passwordConfirmation}"
+            android:text=""
             android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/signUpButton"
             app:layout_constraintEnd_toEndOf="parent"
@@ -122,6 +122,7 @@
             app:layout_constraintBaseline_toBaselineOf="@+id/confirmPasswordEdit"
             app:layout_constraintStart_toStartOf="@+id/passwordTextView" />
 
+
         <Button
             android:id="@+id/cancelButton"
             android:layout_width="wrap_content"
@@ -134,6 +135,7 @@
             app:layout_constraintStart_toEndOf="@+id/loginButton"
             app:layout_constraintTop_toTopOf="@+id/loginButton" />
 
+
         <Button
             android:id="@+id/loginButton"
             android:layout_width="wrap_content"
@@ -141,12 +143,14 @@
             android:layout_marginStart="104dp"
             android:layout_marginBottom="320dp"
             android:text="@string/loginButton"
+            android:onClick="@{()-> viewModel.logginButtonPressed()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/passwordEdit"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/confirmPasswordText"
             app:layout_constraintVertical_bias="0.926" />
+
 
         <Button
             android:id="@+id/createButton"
@@ -161,6 +165,8 @@
             app:layout_constraintStart_toEndOf="@+id/confirmPasswordText"
             app:layout_constraintTop_toBottomOf="@+id/confirmPasswordEdit"
             app:layout_constraintVertical_bias="0.914" />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

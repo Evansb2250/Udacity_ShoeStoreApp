@@ -8,12 +8,11 @@
 
     <data>
         <variable
-            name="loginScreenViewModel"
+            name="viewModel"
             type="com.udacity.shoestore.screens.LoginScreenViewModel" />
     </data>
 
-
-<androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
@@ -49,7 +48,7 @@
         android:ems="10"
         android:inputType="textPassword"
         android:hint="@string/passwordEditHint"
-        android:text="@{loginScreenViewModel.password}"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/confirmPasswordText"
         app:layout_constraintEnd_toEndOf="@+id/confirmPasswordEdit"
         app:layout_constraintHorizontal_bias="0.0"
@@ -64,7 +63,7 @@
         android:layout_marginTop="116dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@={loginScreenViewModel.userName}"
+        android:text=""
         android:hint="@string/userNameHint"
         app:layout_constraintEnd_toEndOf="@+id/passwordEdit"
         app:layout_constraintHorizontal_bias="0.0"
@@ -90,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="60dp"
         android:text="@string/signUpButton"
-        android:onClick="@{()->loginScreenViewModel.creatingNewAccount()}"
+        android:onClick="@{()->viewModel.creatingNewAccount()}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -118,7 +117,7 @@
         android:layout_marginBottom="20dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:text="@{loginScreenViewModel.passwordConfirmation}"
+        android:text=""
         android:hint="@string/passwordEditHint"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/signUpButton"

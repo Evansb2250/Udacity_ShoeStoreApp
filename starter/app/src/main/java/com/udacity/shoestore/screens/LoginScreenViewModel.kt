@@ -1,22 +1,29 @@
 package com.udacity.shoestore.screens
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 
 class LoginScreenViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
 
+    //Stores all the users in the system
     private var users:HashMap<String, String> = HashMap<String, String>()
 
-
-    var userName = MutableLiveData<String>()
-    var password = MutableLiveData<String>()
-    var passwordConfirmation= MutableLiveData<String>()
-
-
+    // variables to hold data inserted in the editText field
+    private var _userName= MutableLiveData<String>()
+    private var _password= MutableLiveData<String>()
+    private var _passwordConfirmation= MutableLiveData<String>()
 
 
+    //Message To User
+    private var _guiMessage= MutableLiveData<String>()
+    var guiMessage:LiveData<String> = _guiMessage
+        set(value) {
+            field = _guiMessage
+        }
 
 
+    //Watches the state of the login page
     private var _loginState= MutableLiveData<Boolean>()
     var loginState:LiveData<Boolean> = _loginState
         set(value) {
@@ -27,18 +34,39 @@ class LoginScreenViewModel : ViewModel() {
 
 
 
-    init {
-        _loginState.value = false
-        userName.value = ""
-        passwordConfirmation.value = ""
-        password.value = ""
+
+    private var _validLoginRequest = MutableLiveData<Boolean>()
+    var validLoginRequest:LiveData<Boolean> = _validLoginRequest
+    set(value){
+        field = _validLoginRequest
     }
 
-/*
-1. press button
-2. call function to change live data
-3.
- */
+
+    private var _logginButtonPressed = MutableLiveData<Boolean>()
+    var logginButtonPressed:LiveData<Boolean> = _logginButtonPressed
+    set(value){
+        field =_logginButtonPressed
+    }
+
+
+
+    private var _createButtonPressed = MutableLiveData<Boolean>()
+    var createButtonPressed:LiveData<Boolean> = _createButtonPressed
+        set(value){
+            field =_createButtonPressed
+        }
+
+
+
+    init {
+        _createButtonPressed.value = false
+        _loginState.value = false
+        _logginButtonPressed.value = false
+        _userName.value = ""
+        _passwordConfirmation.value = ""
+        _password.value = ""
+    }
+
 
     fun creatingNewAccount(){
       _loginState.value = true
@@ -46,29 +74,75 @@ class LoginScreenViewModel : ViewModel() {
 
 
 
-    fun restoreLoginState(){
-        _loginState.value = false
+    fun getUIDetails(nameEntry: String, passwordEntry: String, passwordConfirmEntry: String =""){
+        //gets the information from GUI
+        _userName.value = nameEntry
+        _password.value = passwordEntry
+        _passwordConfirmation.value = passwordConfirmEntry
+
+        //Checks to see if the user needs to be added or logged in
+        checkingRequest()
     }
+
+
+    fun checkingRequest(){
+        if(loginState.value == true){
+            if(doesUserExist()){
+                if(isPasswordValid()){
+                    _validLoginRequest.value = true
+                }else
+                    alertUserRequestFailed()
+
+            }else
+                alertUserRequestFailed()
+
+        }else
+            createNewUser()
+    }
+
+
+
+    private fun alertUserRequestFailed() { _guiMessage.value = "Access Denied!!" }
+
+    private fun createNewUser() {
+        if(!doesUserExist() && doesPasswordsMatch() && _userName.value.toString() != ""){
+            users.put(_userName.value.toString(),  _password.value.toString())
+        }else{
+            //creates an error message
+                alertUserRequestFailed()
+        }
+
+    }
+
+
+
+    private fun doesPasswordsMatch(): Boolean = if(_password.value.equals(_passwordConfirmation.value)) true else false
+
+    private fun isPasswordValid():Boolean = users.get(_userName.value.toString())!!.get(0).equals(_password.value.toString())
+
+    private fun doesUserExist() :Boolean =  users.containsKey(_userName.value)
+
+
+
+
+
+    fun restoreLoginState(){ _loginState.value = false }
 
 
     fun clearVariableData(){
-        userName.value = ""
-        password.value = ""
-        passwordConfirmation.value = ""
+        _userName.value = ""
+        _password.value = ""
+        _passwordConfirmation.value = ""
     }
 
 
+    fun logginButtonPressed(){ _logginButtonPressed.value = true }
+
+    fun resetButtonState(state: Boolean) { _logginButtonPressed.value = state }
+
+    fun createAccount(){ _createButtonPressed.value = true }
+    fun resetCreateButton(){ _createButtonPressed.value = false }
 }
 
-
-
-class LoginScreenViewModelFactory: ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if(modelClass.isAssignableFrom(LoginScreenViewModel::class.java)){
-            return LoginScreenViewModel() as T
-        }
-        throw  IllegalArgumentException("Unknown ViewModel class")
-    }
-}
 
 
