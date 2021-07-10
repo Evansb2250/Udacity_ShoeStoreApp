@@ -3,11 +3,12 @@ package com.udacity.shoestore.screens
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import timber.log.Timber
 
 class LoginScreenViewModel : ViewModel() {
 
     //Stores all the users in the system
-    private var users:HashMap<String, String> = HashMap<String, String>()
+    private var users:HashMap<String, String> =  HashMap<String, String>()
 
     // variables to hold data inserted in the editText field
     private var _userName= MutableLiveData<String>()
@@ -32,9 +33,6 @@ class LoginScreenViewModel : ViewModel() {
 
 
 
-
-
-
     private var _validLoginRequest = MutableLiveData<Boolean>()
     var validLoginRequest:LiveData<Boolean> = _validLoginRequest
     set(value){
@@ -42,35 +40,11 @@ class LoginScreenViewModel : ViewModel() {
     }
 
 
-    private var _logginButtonPressed = MutableLiveData<Boolean>()
-    var logginButtonPressed:LiveData<Boolean> = _logginButtonPressed
-    set(value){
-        field =_logginButtonPressed
-    }
-
-
-
-    private var _createButtonPressed = MutableLiveData<Boolean>()
-    var createButtonPressed:LiveData<Boolean> = _createButtonPressed
-        set(value){
-            field =_createButtonPressed
-        }
-
-
-
-    init {
-        _createButtonPressed.value = false
+    fun creatingNewUserState(){
         _loginState.value = false
-        _logginButtonPressed.value = false
-        _userName.value = ""
-        _passwordConfirmation.value = ""
-        _password.value = ""
     }
 
-
-    fun creatingNewAccount(){
-      _loginState.value = true
-    }
+    fun restoreLoginState(){ _loginState.value = true }
 
 
 
@@ -85,17 +59,10 @@ class LoginScreenViewModel : ViewModel() {
     }
 
 
+
     fun checkingRequest(){
         if(loginState.value == true){
-            if(doesUserExist()){
-                if(isPasswordValid()){
-                    _validLoginRequest.value = true
-                }else
-                    alertUserRequestFailed()
-
-            }else
-                alertUserRequestFailed()
-
+            if(doesUserExist() && isPasswordValid()) _validLoginRequest.value = true else alertUserRequestFailed()
         }else
             createNewUser()
     }
@@ -107,26 +74,19 @@ class LoginScreenViewModel : ViewModel() {
     private fun createNewUser() {
         if(!doesUserExist() && doesPasswordsMatch() && _userName.value.toString() != ""){
             users.put(_userName.value.toString(),  _password.value.toString())
+            _validLoginRequest.value = true
         }else{
             //creates an error message
-                alertUserRequestFailed()
+            alertUserRequestFailed()
         }
 
     }
 
-
-
     private fun doesPasswordsMatch(): Boolean = if(_password.value.equals(_passwordConfirmation.value)) true else false
 
-    private fun isPasswordValid():Boolean = users.get(_userName.value.toString())!!.get(0).equals(_password.value.toString())
+    private fun isPasswordValid():Boolean = users.get(_userName.value.toString()).equals(_password.value.toString())
 
-    private fun doesUserExist() :Boolean =  users.containsKey(_userName.value)
-
-
-
-
-
-    fun restoreLoginState(){ _loginState.value = false }
+    private fun doesUserExist() :Boolean =  users.containsKey(_userName.value.toString())
 
 
     fun clearVariableData(){
@@ -136,12 +96,20 @@ class LoginScreenViewModel : ViewModel() {
     }
 
 
-    fun logginButtonPressed(){ _logginButtonPressed.value = true }
+    fun resetLoginState() {
+        _validLoginRequest.value = false
+    }
 
-    fun resetButtonState(state: Boolean) { _logginButtonPressed.value = state }
 
-    fun createAccount(){ _createButtonPressed.value = true }
-    fun resetCreateButton(){ _createButtonPressed.value = false }
+
+    init {
+        _loginState.value = true
+        _userName.value = ""
+        _passwordConfirmation.value = ""
+        _password.value = ""
+    }
+
+
 }
 
 

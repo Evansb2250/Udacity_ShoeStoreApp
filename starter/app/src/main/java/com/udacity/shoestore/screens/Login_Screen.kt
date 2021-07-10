@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -20,6 +21,7 @@ import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.LoginScreenFragmentBinding
 import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 import java.text.ParsePosition
 
 class Login_Screen : Fragment() {
@@ -36,40 +38,38 @@ class Login_Screen : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.login__screen_fragment, container, false)
         viewModel = ViewModelProvider(this).get(LoginScreenViewModel::class.java)
+
         binding.viewModel = viewModel
         binding.setLifecycleOwner(this)
 
 
+        //sets onClick listeners for the buttons
+        intializeButtons()
 
 
-        viewModel.loginState.observe(viewLifecycleOwner, Observer { isCreatingNewAccount ->
-            if (isCreatingNewAccount) {
-                changeLoginCreateButtonsVisibility(View.INVISIBLE)
-                createSubscriptionViews(View.VISIBLE)
-            } else {
+        viewModel.guiMessage.observe(viewLifecycleOwner, Observer { message ->
+            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        })
+
+
+
+        viewModel.loginState.observe(viewLifecycleOwner, Observer { inLoginState ->
+            if (inLoginState) {
                 changeLoginCreateButtonsVisibility(View.VISIBLE)
                 createSubscriptionViews(View.INVISIBLE)
-                viewModel.clearVariableData()
+            }
+            else {
+                changeLoginCreateButtonsVisibility(View.INVISIBLE)
+                createSubscriptionViews(View.VISIBLE)
             }
         })
 
 
 
-        viewModel.validLoginRequest.observe(viewLifecycleOwner, Observer { accessPermission ->
-            if (accessPermission) {
-                findNavController().navigate(Login_ScreenDirections.actionLoginScreenToWelcomeScreen())
-            }
-        })
-
-
-        viewModel.createButtonPressed.observe(viewLifecycleOwner, Observer { buttonPressed ->
-            getDataFromGUI()
-        })
-
-        viewModel.logginButtonPressed.observe(viewLifecycleOwner, Observer { ifPressed ->
-            if(ifPressed){
-                getDataFromGUI()
-                viewModel.resetButtonState(false)
+        viewModel.validLoginRequest.observe(viewLifecycleOwner, Observer { requestResponse ->
+            if(requestResponse) {
+                logUserIn()
+                viewModel.resetLoginState()
             }
         })
 
@@ -81,12 +81,58 @@ class Login_Screen : Fragment() {
 
 
 
+    private fun intializeButtons() {
+        setUpButtonListener(binding.loginButton)
+        setUpButtonListener(binding.signUpButton)
+        binding.cancelButton?.let { setUpButtonListener(it) }
+        binding.createButton?.let { setUpButtonListener(it) }
+    }
+
+
+
+
+    private fun setUpButtonListener(button: Button){
+        button.setOnClickListener{
+            when(button){
+                //attempt to log a user in
+                binding.loginButton -> {getDataFromGUI()}
+                //ask user for to enter username, password and validate password
+                binding.signUpButton ->{
+                    viewModel.creatingNewUserState()
+                    viewModel.clearVariableData()
+                    clearEditTexts()
+                }
+                //return to login state
+                binding.cancelButton ->{
+                    viewModel.restoreLoginState()
+                    viewModel.clearVariableData()
+                    clearEditTexts()
+                }
+                //Creating an account
+                else ->{ getDataFromGUI()}
+            }
+
+        }
+
+
+    }
+
+
+
+
+    private fun clearEditTexts(){
+            binding.userNameEdit.setText("")
+            binding.passwordEdit.setText("")
+            binding.confirmPasswordEdit.setText("")
+    }
+
+
     private fun getDataFromGUI(){
         val name = binding.userNameEdit.getText().toString()?:""
         val password = binding.passwordEdit.getText().toString()?:""
-        viewModel.getUIDetails(name, password)
+        val passwordConfirmation =binding.confirmPasswordEdit.getText().toString()?:""
+        viewModel.getUIDetails(name, password, passwordConfirmation)
     }
-
 
 
     private fun changeLoginCreateButtonsVisibility(visibility: Int) {
@@ -101,5 +147,8 @@ class Login_Screen : Fragment() {
         binding.createButton?.visibility = visibility
     }
 
+    private fun logUserIn(){
+        findNavController().navigate(Login_ScreenDirections.actionLoginScreenToWelcomeScreen())
+    }
 
 }

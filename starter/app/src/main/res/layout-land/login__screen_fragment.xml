@@ -12,6 +12,8 @@
             type="com.udacity.shoestore.screens.LoginScreenViewModel" />
     </data>
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -89,7 +91,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="60dp"
         android:text="@string/signUpButton"
-        android:onClick="@{()->viewModel.creatingNewAccount()}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
