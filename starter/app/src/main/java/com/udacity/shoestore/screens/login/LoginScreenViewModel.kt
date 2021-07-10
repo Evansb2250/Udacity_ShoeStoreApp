@@ -1,14 +1,11 @@
-package com.udacity.shoestore.screens
+package com.udacity.shoestore.screens.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import timber.log.Timber
+import com.udacity.shoestore.dataStorage.UserData
 
-class LoginScreenViewModel : ViewModel() {
-
-    //Stores all the users in the system
-    private var users:HashMap<String, String> =  HashMap<String, String>()
+class LoginScreenViewModel(private val db: UserData) : ViewModel() {
 
     // variables to hold data inserted in the editText field
     private var _userName= MutableLiveData<String>()
@@ -32,7 +29,7 @@ class LoginScreenViewModel : ViewModel() {
         }
 
 
-
+    //triggers navigation to the welcome page
     private var _validLoginRequest = MutableLiveData<Boolean>()
     var validLoginRequest:LiveData<Boolean> = _validLoginRequest
     set(value){
@@ -40,11 +37,9 @@ class LoginScreenViewModel : ViewModel() {
     }
 
 
-    fun creatingNewUserState(){
-        _loginState.value = false
-    }
+    fun creatingNewUserState(){ _loginState.value = false }
 
-    fun restoreLoginState(){ _loginState.value = true }
+    fun restoreLoginState() {_loginState.value = true }
 
 
 
@@ -61,11 +56,15 @@ class LoginScreenViewModel : ViewModel() {
 
 
     fun checkingRequest(){
+        val email = _userName.value.toString()
+        val password  = _password.value.toString()
+
         if(loginState.value == true){
-            if(doesUserExist() && isPasswordValid()) _validLoginRequest.value = true else alertUserRequestFailed()
+            if(db.containsUser(email) && db.isValidLogRequest(email, password)) _validLoginRequest.value = true else alertUserRequestFailed()
         }else
             createNewUser()
     }
+
 
 
 
@@ -73,20 +72,24 @@ class LoginScreenViewModel : ViewModel() {
 
     private fun createNewUser() {
         if(!doesUserExist() && doesPasswordsMatch() && _userName.value.toString() != ""){
-            users.put(_userName.value.toString(),  _password.value.toString())
+             val email = _userName.value.toString()
+             val password =_password.value.toString()
+
+             db.createUser(email,password)
             _validLoginRequest.value = true
         }else{
             //creates an error message
             alertUserRequestFailed()
+
         }
 
     }
 
+
     private fun doesPasswordsMatch(): Boolean = if(_password.value.equals(_passwordConfirmation.value)) true else false
 
-    private fun isPasswordValid():Boolean = users.get(_userName.value.toString()).equals(_password.value.toString())
 
-    private fun doesUserExist() :Boolean =  users.containsKey(_userName.value.toString())
+    private fun doesUserExist() :Boolean =  db.containsUser(_userName.value.toString())
 
 
     fun clearVariableData(){
@@ -111,6 +114,11 @@ class LoginScreenViewModel : ViewModel() {
 
 
 }
+
+
+
+
+
 
 
 

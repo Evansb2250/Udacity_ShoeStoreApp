@@ -3,13 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".screens.Login_Screen">
+    tools:context=".screens.login.Login_Screen">
 
 
     <data>
         <variable
             name="viewModel"
-            type="com.udacity.shoestore.screens.LoginScreenViewModel" />
+            type="com.udacity.shoestore.screens.login.LoginScreenViewModel" />
     </data>
 
 

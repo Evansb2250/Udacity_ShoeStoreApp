@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/login_Screen"
-        android:name="com.udacity.shoestore.screens.Login_Screen"
+        android:name="com.udacity.shoestore.screens.login.Login_Screen"
         android:label="login__screen_fragment"
         tools:layout="@layout/login__screen_fragment" >
         <action

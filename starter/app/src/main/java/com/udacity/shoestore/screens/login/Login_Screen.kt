@@ -1,32 +1,23 @@
-package com.udacity.shoestore.screens
+package com.udacity.shoestore.screens.login
 
-import android.content.res.Configuration
-import android.database.DatabaseUtils
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.LoginScreenFragmentBinding
 import kotlinx.android.synthetic.main.activity_main.*
-import timber.log.Timber
-import java.text.ParsePosition
 
 class Login_Screen : Fragment() {
 
-
+    private lateinit var viewModelFactory: LoginScreenViewModelFactory
     private lateinit var binding: LoginScreenFragmentBinding
     private lateinit var viewModel: LoginScreenViewModel
 
@@ -37,22 +28,21 @@ class Login_Screen : Fragment() {
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.login__screen_fragment, container, false)
-        viewModel = ViewModelProvider(this).get(LoginScreenViewModel::class.java)
 
-        binding.viewModel = viewModel
-        binding.setLifecycleOwner(this)
+        //initializes the viewModel, factory obj & Binds with the binding object
+        setUpViewModel()
 
 
         //sets onClick listeners for the buttons
         intializeButtons()
 
-
+        //Displays errors
         viewModel.guiMessage.observe(viewLifecycleOwner, Observer { message ->
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
         })
 
 
-
+        //Switches between the state
         viewModel.loginState.observe(viewLifecycleOwner, Observer { inLoginState ->
             if (inLoginState) {
                 changeLoginCreateButtonsVisibility(View.VISIBLE)
@@ -65,7 +55,7 @@ class Login_Screen : Fragment() {
         })
 
 
-
+        //responds when a valid user name and password is entered
         viewModel.validLoginRequest.observe(viewLifecycleOwner, Observer { requestResponse ->
             if(requestResponse) {
                 logUserIn()
@@ -79,6 +69,12 @@ class Login_Screen : Fragment() {
         return binding.root
     }
 
+    private fun setUpViewModel() {
+        viewModelFactory = LoginScreenViewModelFactory()
+        viewModel = ViewModelProvider(this, viewModelFactory).get(LoginScreenViewModel::class.java)
+        binding.viewModel = viewModel
+        binding.setLifecycleOwner(this)
+    }
 
 
     private fun intializeButtons() {
@@ -148,7 +144,7 @@ class Login_Screen : Fragment() {
     }
 
     private fun logUserIn(){
-        findNavController().navigate(Login_ScreenDirections.actionLoginScreenToWelcomeScreen())
+        findNavController().navigate(com.udacity.shoestore.screens.login.Login_ScreenDirections.actionLoginScreenToWelcomeScreen())
     }
 
 }
