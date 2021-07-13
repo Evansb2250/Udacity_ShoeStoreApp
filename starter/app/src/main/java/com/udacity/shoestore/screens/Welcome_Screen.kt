@@ -29,12 +29,15 @@ class Welcome_Screen : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_welcome__screen, container, false)
+
 
         binding.imageButton.setOnClickListener{
      //       findNavController().navigate(Welcome_ScreenDirections.())
         }
+
 
         binding.homeButton.setOnClickListener{
             findNavController().navigate(Welcome_ScreenDirections.actionWelcomeScreenToShoeListing())

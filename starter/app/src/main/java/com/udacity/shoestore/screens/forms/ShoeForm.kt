@@ -35,7 +35,6 @@ class ShoeForm : Fragment() {
     ): View? {
         //Create a the binding object
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_form, container, false)
-
         viewModel = ViewModelProvider(this).get(ShoeFormViewModel::class.java)
 
         binding.shoeViewModel = viewModel

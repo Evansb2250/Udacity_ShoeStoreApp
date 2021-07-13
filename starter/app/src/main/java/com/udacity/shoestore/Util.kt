@@ -21,12 +21,17 @@ class Util {
 
 
         private fun addDataToTextView(textView: TextView, shoe:Shoe,  application: Application) : TextView {
+
             val typFace = ResourcesCompat.getFont(application,R.font.aclonica)
+            textView.tag = shoe.name
+
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) { textView.setTextAppearance(R.style.TextAppearance_AppCompat_Display1) }
+
             textView.setText(shoe.name)
             textView.setTextColor(Color.parseColor("#191515"))
             textView.setTextSize(35f)
+
             textView.layoutParams = createParameters()
             textView.typeface = typFace
             return textView

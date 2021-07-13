@@ -3,8 +3,10 @@ package com.udacity.shoestore.screens.shoeListing
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +24,8 @@ import com.udacity.shoestore.Util
 import com.udacity.shoestore.databinding.FragmentShoeListingBinding
 import com.udacity.shoestore.models.Shoe
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_shoe_listing.*
+import timber.log.Timber
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -52,13 +56,14 @@ class ShoeListing : Fragment() {
 
 
 
+
         viewModel.shoeList.observe(viewLifecycleOwner, Observer { listOfShoes ->
             listOfShoes.forEach {
                 val textView = Util.createTextView(it, requireActivity().application)
+                createOnClickTV(textView)
                 binding.linearLayout.addView(textView)
             }
         })
-
 
 
         setUpFloatingActionButtons()
@@ -71,21 +76,16 @@ class ShoeListing : Fragment() {
     }
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
-
     private fun setUpFloatingActionButtons() {
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(ShoeListingDirections.actionShoeListingToShoeForm())
-        }
+         }
     }
 
 
     private fun getScreenOrientation() {
         val orientation = activity?.getResources()?.getConfiguration()?.orientation
-        screenOrientation = if (orientation == 1) 1 else 2
+        screenOrientation = if (orientation == PORTRAIT) PORTRAIT else LANDSCAPE
     }
 
 
@@ -101,10 +101,18 @@ class ShoeListing : Fragment() {
     }
 
 
+    private fun createOnClickTV(textView: TextView){
+        textView.setOnClickListener{
+
+            Toast.makeText(requireContext(),it.tag.toString(), Toast.LENGTH_SHORT).show()
+        }
+    }
+
 
 
     companion object {
         private const val PORTRAIT = 1
+        private const val LANDSCAPE = 2
     }
 
 }

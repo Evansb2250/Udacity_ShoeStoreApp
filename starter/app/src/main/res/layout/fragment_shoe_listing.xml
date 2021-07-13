@@ -48,65 +48,6 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:fontFamily="@font/aclonica"
-                    android:text="Jordans "
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    android:textColor="#191515" />
-
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Spinks"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    android:textColor="#191515" />
-
-                <TextView
-                    android:id="@+id/textView17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Adidas"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    android:textColor="#191515" />
-
-                <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Nike"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    android:textColor="#191515" />
-
-                <TextView
-                    android:id="@+id/textView19"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Air Max"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    android:textColor="#191515" />
-
-                <TextView
-                    android:id="@+id/textView20"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="New Balance"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    android:textColor="#191515" />
 
             </LinearLayout>
         </ScrollView>
