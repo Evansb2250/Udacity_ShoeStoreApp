@@ -49,7 +49,7 @@
                     android:ems="10"
                     android:hint="@string/userNameHint"
                     android:inputType="textPersonName"
-                    android:text="" />
+                    android:text="@={viewModel.userName}" />
             </TableRow>
 
             <TableRow
@@ -70,7 +70,7 @@
                     android:ems="10"
                     android:hint="@string/passwordEditHint"
                     android:inputType="textPassword"
-                    android:text="" />
+                    android:text="@={viewModel.password}" />
             </TableRow>
 
             <TableRow
@@ -87,14 +87,12 @@
 
                 <EditText
                     android:id="@+id/confirmPasswordEdit"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="56dp"
-                    android:layout_marginBottom="20dp"
                     android:ems="10"
                     android:hint="@string/passwordEditHint"
                     android:inputType="textPassword"
-                    android:text=""
+                    android:text="@={viewModel.passwordConfirmation}"
                     android:visibility="invisible" />
             </TableRow>
 
@@ -106,6 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="240dp"
             android:text="@string/loginButton"
+            android:onClick="@{()-> viewModel.getUIDetails()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/signUpButton" />
 
@@ -151,7 +150,7 @@
             app:layout_constraintHorizontal_bias="0.983"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tableLayout"
-            app:layout_constraintVertical_bias="0.277" />
+            app:layout_constraintVertical_bias="0.114" />
 
         <Button
             android:id="@+id/createButton"
@@ -160,6 +159,7 @@
             android:layout_marginStart="53dp"
             android:layout_marginEnd="204dp"
             android:text="Create"
+            android:onClick="@{()-> viewModel.getUIDetails()}"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

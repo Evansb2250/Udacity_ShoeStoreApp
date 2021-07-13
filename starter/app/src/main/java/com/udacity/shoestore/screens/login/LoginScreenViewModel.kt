@@ -5,12 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.udacity.shoestore.dataStorage.UserData
 
+
+
 class LoginScreenViewModel(private val db: UserData) : ViewModel() {
 
     // variables to hold data inserted in the editText field
-    private var _userName= MutableLiveData<String>()
-    private var _password= MutableLiveData<String>()
-    private var _passwordConfirmation= MutableLiveData<String>()
+     var userName = MutableLiveData<String>()
+     var password = MutableLiveData<String>()
+     var passwordConfirmation = MutableLiveData<String>()
 
 
     //Message To User
@@ -37,18 +39,13 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
     }
 
 
-    fun creatingNewUserState(){ _loginState.value = false }
+    fun creatingNewUserState(){ _loginState.value = SUBCRIBING }
 
-    fun restoreLoginState() {_loginState.value = true }
+    fun restoreLoginState() {_loginState.value = LOGGING_IN }
 
 
 
-    fun getUIDetails(nameEntry: String, passwordEntry: String, passwordConfirmEntry: String =""){
-        //gets the information from GUI
-        _userName.value = nameEntry
-        _password.value = passwordEntry
-        _passwordConfirmation.value = passwordConfirmEntry
-
+    fun getUIDetails(){
         //Checks to see if the user needs to be added or logged in
         checkingRequest()
     }
@@ -56,25 +53,27 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
 
 
     fun checkingRequest(){
-        val email = _userName.value.toString()
-        val password  = _password.value.toString()
-
-        if(loginState.value == true){
-            if(db.containsUser(email) && db.isValidLogRequest(email, password)) _validLoginRequest.value = true else alertUserRequestFailed()
+        if(loginState.value == LOGGING_IN){
+            val email = userName.value.toString()
+            val password  = password.value.toString()
+            if(db.containsUser(email) && db.isValidLogRequest(email, password))
+                _validLoginRequest.value = CREDENTIALS_ACCEPTED else alertUserRequestFailed()
         }else
             createNewUser()
     }
 
 
-    private fun alertUserRequestFailed() { _guiMessage.value = "Access Denied!!" }
+    private fun alertUserRequestFailed() {
+        _guiMessage.value = if(loginState.value == LOGGING_IN) "could not log in!!" else "couldn't create user"
+    }
 
     private fun createNewUser() {
-        if(!doesUserExist() && doesPasswordsMatch() && _userName.value.toString() != ""){
-             val email = _userName.value.toString()
-             val password =_password.value.toString()
+        if(!doesUserExist() && doesPasswordsMatch() && userName.value.toString() != ""){
+             val email = userName.value.toString()
+             val password =password.value.toString()
 
              db.createUser(email,password)
-            _validLoginRequest.value = true
+            _validLoginRequest.value = CREDENTIALS_ACCEPTED
         }else{
             //creates an error message
             alertUserRequestFailed()
@@ -84,30 +83,36 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
     }
 
 
-    private fun doesPasswordsMatch(): Boolean = if(_password.value.equals(_passwordConfirmation.value)) true else false
+    private fun doesPasswordsMatch(): Boolean = if(password.value.equals(passwordConfirmation.value)) true else false
 
 
-    private fun doesUserExist() :Boolean =  db.containsUser(_userName.value.toString())
+    private fun doesUserExist() :Boolean =  db.containsUser(userName.value.toString())
 
 
     fun clearVariableData(){
-        _userName.value = ""
-        _password.value = ""
-        _passwordConfirmation.value = ""
+        userName.value = ""
+        password.value = ""
+        passwordConfirmation.value = ""
     }
 
 
     fun resetLoginState() {
-        _validLoginRequest.value = false
+        _validLoginRequest.value = !CREDENTIALS_ACCEPTED
     }
 
 
 
     init {
-        _loginState.value = true
-        _userName.value = ""
-        _passwordConfirmation.value = ""
-        _password.value = ""
+        _loginState.value = LOGGING_IN
+        userName.value = ""
+        passwordConfirmation.value = ""
+        password.value = ""
+
+    }
+    companion object{
+        private const val LOGGING_IN = true
+        private const val SUBCRIBING = false
+        private const val CREDENTIALS_ACCEPTED = true
     }
 
 

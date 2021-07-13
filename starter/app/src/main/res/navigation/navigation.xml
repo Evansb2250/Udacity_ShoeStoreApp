@@ -18,5 +18,39 @@
         android:id="@+id/welcome_Screen"
         android:name="com.udacity.shoestore.screens.Welcome_Screen"
         android:label="fragment_welcome__screen"
-        tools:layout="@layout/fragment_welcome__screen" />
+        tools:layout="@layout/fragment_welcome__screen" >
+        <action
+            android:id="@+id/action_welcome_Screen_to_shoeListing"
+            app:destination="@id/shoeListing" />
+    </fragment>
+    <fragment
+        android:id="@+id/instruction_Screen2"
+        android:name="com.udacity.shoestore.screens.instructions.Instruction_Screen"
+        android:label="fragment_instruction__screen"
+        tools:layout="@layout/fragment_instruction__screen" >
+        <action
+            android:id="@+id/action_instruction_Screen2_to_shoeListing"
+            app:popUpTo="@id/shoeListing" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoeListing"
+        android:name="com.udacity.shoestore.screens.shoeListing.ShoeListing"
+        android:label="ShoeListing" >
+        <argument
+            android:name="shoe"
+            app:argType="com.udacity.shoestore.models.Shoe"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_shoeListing_to_shoeForm"
+            app:destination="@id/shoeForm" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoeForm"
+        android:name="com.udacity.shoestore.screens.forms.ShoeForm"
+        android:label="fragment_shoe_form"
+        tools:layout="@layout/fragment_shoe_form">
+        <action
+            android:id="@+id/action_shoeForm_to_shoeListing"
+            app:destination="@id/shoeListing" />
+    </fragment>
 </navigation>

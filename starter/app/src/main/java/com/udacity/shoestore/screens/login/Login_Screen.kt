@@ -82,10 +82,8 @@ class Login_Screen : Fragment() {
 
 
     private fun intializeButtons() {
-        setUpButtonListener(binding.loginButton)
         setUpButtonListener(binding.signUpButton)
         binding.cancelButton?.let { setUpButtonListener(it) }
-        binding.createButton?.let { setUpButtonListener(it) }
     }
 
 
@@ -94,8 +92,6 @@ class Login_Screen : Fragment() {
     private fun setUpButtonListener(button: Button){
         button.setOnClickListener{
             when(button){
-                //attempt to log a user in
-                binding.loginButton -> {getDataFromGUI()}
                 //ask user for to enter username, password and validate password
                 binding.signUpButton -> {
                     viewModel.creatingNewUserState()
@@ -103,15 +99,12 @@ class Login_Screen : Fragment() {
                     clearEditTexts()
                 }
                 //return to login state
-                binding.cancelButton ->{
+                else ->{
                     viewModel.restoreLoginState()
                     viewModel.clearVariableData()
                     clearEditTexts()
                 }
-                //Creating an account
-                else ->{ getDataFromGUI()}
             }
-
         }
 
 
@@ -127,12 +120,6 @@ class Login_Screen : Fragment() {
     }
 
 
-    private fun getDataFromGUI(){
-        val name = binding.userNameEdit.getText().toString()?:""
-        val password = binding.passwordEdit.getText().toString()?:""
-        val passwordConfirmation =binding.confirmPasswordEdit.getText().toString()?:""
-        viewModel.getUIDetails(name, password, passwordConfirmation)
-    }
 
 
     private fun changeLoginCreateButtonsVisibility(visibility: Int) {
