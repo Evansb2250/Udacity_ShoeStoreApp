@@ -1,13 +1,18 @@
 package com.udacity.shoestore.screens.shoeListing
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -29,10 +34,14 @@ import kotlinx.android.synthetic.main.activity_main.*
  */
 class ShoeListing : Fragment() {
 
-    private val args by navArgs<ShoeListingArgs>()
+
     private var screenOrientation: Int = -1
+
+    //Creates a shared ViewModel
+    private val  viewModel: ShoeListingViewModel by activityViewModels()
     private lateinit var binding: FragmentShoeListingBinding
 
+    @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,43 +50,38 @@ class ShoeListing : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_listing, container, false)
 
+
+
+        viewModel.shoeList.observe(viewLifecycleOwner, Observer { listOfShoes ->
+            listOfShoes.forEach {
+                val textView = Util.createTextView(it, requireActivity().application)
+                binding.linearLayout.addView(textView)
+            }
+        })
+
+
+
         setUpFloatingActionButtons()
         getScreenOrientation()
 
-//
-//        if(args.shoe== null){
-//            Toast.makeText(requireContext(), "NOTHING IN THE ARG", Toast.LENGTH_SHORT).show()
-//        }else{
-//            Toast.makeText(requireContext(), "Found SOmething good", Toast.LENGTH_SHORT).show()
-//             args.
-//        }
-//
 
 
-//
-//       val textView  = Util.createTextView(Shoe("fll",2.0,"matrix","dsadsa"),requireActivity().application)
-//
-//
-//        binding.linearLayout?.addView(textView)
-
-
-      //  (activity as AppCompatActivity?)!!.supportActionBar?.show()
         setHasOptionsMenu(true)
         return binding.root
-
-
     }
 
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
 
     private fun setUpFloatingActionButtons() {
-
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(ShoeListingDirections.actionShoeListingToShoeForm())
         }
-
     }
+
 
     private fun getScreenOrientation() {
         val orientation = activity?.getResources()?.getConfiguration()?.orientation

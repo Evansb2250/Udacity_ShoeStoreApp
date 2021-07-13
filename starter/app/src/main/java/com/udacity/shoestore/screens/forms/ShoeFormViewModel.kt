@@ -21,6 +21,7 @@ class ShoeFormViewModel : ViewModel() {
 
 
 
+
     init {
         _isFormRequirementsMet.value = false
     }

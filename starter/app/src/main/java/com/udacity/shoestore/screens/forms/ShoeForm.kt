@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeFormBinding
 import com.udacity.shoestore.models.Shoe
+import com.udacity.shoestore.screens.shoeListing.ShoeListingViewModel
 
 
 /**
@@ -21,8 +23,12 @@ import com.udacity.shoestore.models.Shoe
  * create an instance of this fragment.
  */
 class ShoeForm : Fragment() {
+
     private lateinit var binding: FragmentShoeFormBinding
     private lateinit var viewModel: ShoeFormViewModel
+    private val sharedViewModel:ShoeListingViewModel by activityViewModels()
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,8 +41,8 @@ class ShoeForm : Fragment() {
         binding.shoeViewModel = viewModel
         binding.setLifecycleOwner(this)
 
-        setUpFlagObserver()
 
+        setUpFlagObserver()
         return binding.root
     }
 
@@ -53,9 +59,11 @@ class ShoeForm : Fragment() {
 
     private fun addShoeToNavigationArg() {
         val shoeObj = viewModel.getShoe()
-        if(shoeObj != null)
-        findNavController().navigate(ShoeFormDirections.actionShoeFormToShoeListing(shoeObj))
-       }
+        if (shoeObj != null) {
+            sharedViewModel.addToInventory(shoeObj)
+            findNavController().navigate(ShoeFormDirections.actionShoeFormToShoeListing())
+        }
+    }
 
     }
 

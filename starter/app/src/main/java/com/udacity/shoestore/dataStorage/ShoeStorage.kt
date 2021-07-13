@@ -8,18 +8,5 @@ class ShoeStorage {
         private var users:HashMap<String, Shoe> =  HashMap<String, Shoe>()
     }
 
-//
-//     fun isValidLogRequest(email:String, password: String):Boolean =
-//         if(users.containsKey(email) && users.get(email).equals(password)) true else false
-//
-//
-//
-//     fun containsUser(email:String): Boolean {
-//         return users.containsKey(email)
-//     }
-//
-//     fun createUser(email:String, password: String){
-//        users.put(email,password)
-//    }
 
 }

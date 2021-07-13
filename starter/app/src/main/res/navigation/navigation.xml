@@ -36,10 +36,6 @@
         android:id="@+id/shoeListing"
         android:name="com.udacity.shoestore.screens.shoeListing.ShoeListing"
         android:label="ShoeListing" >
-        <argument
-            android:name="shoe"
-            app:argType="com.udacity.shoestore.models.Shoe"
-            app:nullable="true" />
         <action
             android:id="@+id/action_shoeListing_to_shoeForm"
             app:destination="@id/shoeForm" />
@@ -51,6 +47,7 @@
         tools:layout="@layout/fragment_shoe_form">
         <action
             android:id="@+id/action_shoeForm_to_shoeListing"
-            app:destination="@id/shoeListing" />
+            app:destination="@id/shoeListing"
+            app:popUpTo="@id/shoeListing" />
     </fragment>
 </navigation>

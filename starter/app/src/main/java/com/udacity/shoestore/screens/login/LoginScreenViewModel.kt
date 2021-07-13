@@ -39,6 +39,7 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
     }
 
 
+
     fun creatingNewUserState(){ _loginState.value = SUBCRIBING }
 
     fun restoreLoginState() {_loginState.value = LOGGING_IN }
@@ -71,7 +72,6 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
         if(!doesUserExist() && doesPasswordsMatch() && userName.value.toString() != ""){
              val email = userName.value.toString()
              val password =password.value.toString()
-
              db.createUser(email,password)
             _validLoginRequest.value = CREDENTIALS_ACCEPTED
         }else{
