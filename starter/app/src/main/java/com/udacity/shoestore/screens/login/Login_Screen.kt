@@ -76,7 +76,7 @@ class Login_Screen : Fragment() {
     private fun setUpViewModel() {
         viewModelFactory = LoginScreenViewModelFactory()
         viewModel = ViewModelProvider(this, viewModelFactory).get(LoginScreenViewModel::class.java)
-        binding.viewModel = viewModel
+        binding.loginScreenViewModel = viewModel
         binding.setLifecycleOwner(this)
     }
 

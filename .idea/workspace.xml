@@ -3,28 +3,37 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="88804b04-05b7-4da4-9471-b75027ba8b34" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/starter/app/src/main/java/com/udacity/shoestore/screens/LoginScreenViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/starter/app/src/main/java/com/udacity/shoestore/screens/Login_Screen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/starter/app/src/main/java/com/udacity/shoestore/screens/Welcome_Screen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/starter/app/src/main/res/layout-land/login__screen_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/starter/app/src/main/res/layout/fragment_welcome__screen.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/starter/app/src/main/res/layout/login__screen_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/starter/app/src/main/res/navigation/navigation.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/starter/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/starter/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/starter/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/starter/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/starter/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/starter/gradle.properties" afterDir="false" />
-    </list>
+    <list default="true" id="88804b04-05b7-4da4-9471-b75027ba8b34" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="refactor_Branch" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1v0UrkdLaRstYfzAc5KGx2rSFGP" />
@@ -49,10 +58,33 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1625698858035">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/-2400.146.1920.1040/0.0.1536.824@0.0.1536.824" timestamp="1625698858034" />
+    <state x="-2061" y="146" width="1454" height="870" key="MergeDialog" timestamp="1626539482007">
+      <screen x="-2400" y="146" width="1920" height="1040" />
+    </state>
+    <state x="-2061" y="146" width="1454" height="870" key="MergeDialog/-2400.146.1920.1040/0.0.1536.824@-2400.146.1920.1040" timestamp="1626539482007" />
+    <state x="-1801" y="427" key="MultipleFileMergeDialog" timestamp="1626539652273">
+      <screen x="-2400" y="146" width="1920" height="1040" />
+    </state>
+    <state x="-1801" y="427" key="MultipleFileMergeDialog/-2400.146.1920.1040/0.0.1536.824@-2400.146.1920.1040" timestamp="1626539652273" />
+    <state x="-1780" y="379" key="git4idea.branch.GitSmartOperationDialog" timestamp="1626539437218">
+      <screen x="-2400" y="146" width="1920" height="1040" />
+    </state>
+    <state x="-1780" y="379" key="git4idea.branch.GitSmartOperationDialog/-2400.146.1920.1040/0.0.1536.824@-2400.146.1920.1040" timestamp="1626539437218" />
   </component>
 </project>

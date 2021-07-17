@@ -3,13 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".screens.Login_Screen">
+    tools:context=".screens.login.Login_Screen">
 
 
     <data>
         <variable
             name="loginScreenViewModel"
-            type="com.udacity.shoestore.screens.LoginScreenViewModel" />
+            type="com.udacity.shoestore.screens.login.LoginScreenViewModel" />
     </data>
 
 
@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="60dp"
         android:text="@string/signUpButton"
-        android:onClick="@{()->loginScreenViewModel.creatingNewAccount()}"
+        android:onClick="@{()->loginScreenViewModel.creatingNewUserState()}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
