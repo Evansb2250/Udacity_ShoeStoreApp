@@ -6,13 +6,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E87777"
+        android:background="#FBE6E6"
         tools:context=".screens.shoeListing.ShoeListing">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="39dp"
+            android:layout_height="43dp"
             android:layout_marginStart="84dp"
             android:layout_marginBottom="56dp"
             android:clickable="true"
@@ -111,8 +111,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="Shoe Name: "
-                    android:textColor="#FFFFFF"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="#FFFFFF" />
 
                 <EditText
                     android:id="@+id/shoeNameEditText"
@@ -132,8 +132,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Company"
-                    android:textColor="#FFFFFF"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="#FFFFFF" />
 
                 <EditText
                     android:id="@+id/companyNameEditText"
@@ -153,8 +153,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Size"
-                    android:textColor="#FFFFFF"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="#FFFFFF" />
 
                 <EditText
                     android:id="@+id/shoeSizeNameEditText"
@@ -174,8 +174,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Description"
-                    android:textColor="#FFFFFF"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="#FFFFFF" />
 
                 <EditText
                     android:id="@+id/descriptionEditText"
@@ -190,9 +190,9 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="500dp"
+            android:layout_width="44dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="520dp"
             android:clickable="true"
             app:backgroundTint="#A4925B"
             app:layout_constraintEnd_toEndOf="parent"

@@ -36,9 +36,6 @@ class Login_Screen : Fragment() {
         setUpViewModel()
 
 
-        //sets onClick listeners for the buttons
-        intializeButtons()
-
         //Displays errors
         viewModel.guiMessage.observe(viewLifecycleOwner, Observer { message ->
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
@@ -55,8 +52,15 @@ class Login_Screen : Fragment() {
                 changeLoginCreateButtonsVisibility(View.INVISIBLE)
                 createSubscriptionViews(View.VISIBLE)
             }
+
         })
 
+        viewModel.clearEditText.observe(viewLifecycleOwner, Observer { clearNow ->
+            if(clearNow){
+                clearEditTexts()
+                viewModel.setClearEditToFalse()
+            }
+        })
 
         //responds when a valid user name and password is entered
         viewModel.validLoginRequest.observe(viewLifecycleOwner, Observer { requestResponse ->
@@ -79,37 +83,6 @@ class Login_Screen : Fragment() {
         binding.loginScreenViewModel = viewModel
         binding.setLifecycleOwner(this)
     }
-
-
-    private fun intializeButtons() {
-        setUpButtonListener(binding.signUpButton)
-        binding.cancelButton?.let { setUpButtonListener(it) }
-    }
-
-
-
-
-    private fun setUpButtonListener(button: Button){
-        button.setOnClickListener{
-            when(button){
-                //ask user for to enter username, password and validate password
-                binding.signUpButton -> {
-                    viewModel.creatingNewUserState()
-                    viewModel.clearVariableData()
-                    clearEditTexts()
-                }
-                //return to login state
-                else ->{
-                    viewModel.restoreLoginState()
-                    viewModel.clearVariableData()
-                    clearEditTexts()
-                }
-            }
-        }
-
-
-    }
-
 
 
 
@@ -136,6 +109,7 @@ class Login_Screen : Fragment() {
 
     private fun logUserIn(){
         findNavController().navigate(Login_ScreenDirections.actionLoginScreenToWelcomeScreen())
+        viewModel.restoreLoginState()
     }
 
 }

@@ -3,16 +3,24 @@ package com.udacity.shoestore.screens.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.udacity.shoestore.dataStorage.UserData
+import com.udacity.shoestore.constants.CREDENTIALS_ACCEPTED
+import com.udacity.shoestore.constants.LOGGING_IN
+import com.udacity.shoestore.constants.REGISTERING
 
+import com.udacity.shoestore.dataStorage.User
+import com.udacity.shoestore.dataStorage.UserData
+import timber.log.Timber
 
 
 class LoginScreenViewModel(private val db: UserData) : ViewModel() {
 
-    // variables to hold data inserted in the editText field
-     var userName = MutableLiveData<String>()
-     var password = MutableLiveData<String>()
-     var passwordConfirmation = MutableLiveData<String>()
+    //flags for edit text to clear
+    private var _clearEditText = MutableLiveData<Boolean>()
+    var clearEditText:LiveData<Boolean> = _clearEditText
+        set(value) {
+            field = _clearEditText
+        }
+
 
 
     //Message To User
@@ -21,6 +29,7 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
         set(value) {
             field = _guiMessage
         }
+
 
 
     //Watches the state of the login page
@@ -40,10 +49,22 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
 
 
 
-    fun creatingNewUserState(){ _loginState.value = SUBCRIBING }
+    fun updateStateToRegistration(){ _loginState.value = REGISTERING }
 
     fun restoreLoginState() {_loginState.value = LOGGING_IN }
 
+
+    fun startRegistration(){
+        updateStateToRegistration()
+        User.clear()
+        setClearEditTextToTrue()
+    }
+
+    fun cancelRegistration(){
+        restoreLoginState()
+        User.clear()
+        setClearEditTextToTrue()
+    }
 
 
     fun getUIDetails(){
@@ -55,25 +76,27 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
 
     fun checkingRequest(){
         if(loginState.value == LOGGING_IN){
-            val email = userName.value.toString()
-            val password  = password.value.toString()
-            if(db.containsUser(email) && db.isValidLogRequest(email, password))
+            if(db.containsUser(User.email) && db.isValidLogRequest(User.email, User.password))
                 _validLoginRequest.value = CREDENTIALS_ACCEPTED else alertUserRequestFailed()
         }else
             createNewUser()
+        setClearEditTextToTrue()
+        User.clear()
     }
 
+
+    fun setClearEditTextToTrue(){
+        _clearEditText.value = true
+    }
 
     private fun alertUserRequestFailed() {
         _guiMessage.value = if(loginState.value == LOGGING_IN) "could not log in!!" else "couldn't create user"
     }
 
     private fun createNewUser() {
-        if(!doesUserExist() && doesPasswordsMatch() && userName.value.toString() != ""){
-             val email = userName.value.toString()
-             val password =password.value.toString()
-             db.createUser(email,password)
-            _validLoginRequest.value = CREDENTIALS_ACCEPTED
+        if(!doesUserExist() && doesPasswordsMatch() && User.email != ""){
+              db.createUser(User.email, User.password)
+             _validLoginRequest.value = CREDENTIALS_ACCEPTED
         }else{
             //creates an error message
             alertUserRequestFailed()
@@ -83,36 +106,21 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
     }
 
 
-    private fun doesPasswordsMatch(): Boolean = if(password.value.equals(passwordConfirmation.value)) true else false
+
+    private fun doesPasswordsMatch(): Boolean = if(User.password.equals(User.passwordAuthentication)) true else false
 
 
-    private fun doesUserExist() :Boolean =  db.containsUser(userName.value.toString())
+    private fun doesUserExist() :Boolean =  db.containsUser(User.email)
 
 
-    fun clearVariableData(){
-        userName.value = ""
-        password.value = ""
-        passwordConfirmation.value = ""
-    }
+    fun resetLoginState() { _validLoginRequest.value = !CREDENTIALS_ACCEPTED }
 
-
-    fun resetLoginState() {
-        _validLoginRequest.value = !CREDENTIALS_ACCEPTED
-    }
-
+    fun setClearEditToFalse() { _clearEditText.value = false }
 
 
     init {
         _loginState.value = LOGGING_IN
-        userName.value = ""
-        passwordConfirmation.value = ""
-        password.value = ""
-
-    }
-    companion object{
-        private const val LOGGING_IN = true
-        private const val SUBCRIBING = false
-        private const val CREDENTIALS_ACCEPTED = true
+         setClearEditToFalse()
     }
 
 

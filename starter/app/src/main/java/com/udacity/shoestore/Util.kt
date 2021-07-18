@@ -28,9 +28,9 @@ class Util {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) { textView.setTextAppearance(R.style.TextAppearance_AppCompat_Display1) }
 
-            textView.setText(shoe.name)
+            textView.setText("${shoe.name} ${shoe.company}  ${shoe.size.toString()}")
             textView.setTextColor(Color.parseColor("#191515"))
-            textView.setTextSize(35f)
+            textView.setTextSize(20f)
 
             textView.layoutParams = createParameters()
             textView.typeface = typFace

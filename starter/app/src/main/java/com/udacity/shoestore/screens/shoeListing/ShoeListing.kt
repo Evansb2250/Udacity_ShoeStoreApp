@@ -21,6 +21,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.R
 import com.udacity.shoestore.Util
+import com.udacity.shoestore.constants.LANDSCAPE
+import com.udacity.shoestore.constants.PORTRAIT
 import com.udacity.shoestore.databinding.FragmentShoeListingBinding
 import com.udacity.shoestore.models.Shoe
 import kotlinx.android.synthetic.main.activity_main.*
@@ -103,16 +105,10 @@ class ShoeListing : Fragment() {
 
     private fun createOnClickTV(textView: TextView){
         textView.setOnClickListener{
-
             Toast.makeText(requireContext(),it.tag.toString(), Toast.LENGTH_SHORT).show()
         }
     }
 
 
-
-    companion object {
-        private const val PORTRAIT = 1
-        private const val LANDSCAPE = 2
-    }
 
 }
