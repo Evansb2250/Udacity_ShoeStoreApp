@@ -80,7 +80,7 @@ class Login_Screen : Fragment() {
     private fun setUpViewModel() {
         viewModelFactory = LoginScreenViewModelFactory()
         viewModel = ViewModelProvider(this, viewModelFactory).get(LoginScreenViewModel::class.java)
-        binding.loginScreenViewModel = viewModel
+        binding.viewModel = viewModel
         binding.setLifecycleOwner(this)
     }
 
