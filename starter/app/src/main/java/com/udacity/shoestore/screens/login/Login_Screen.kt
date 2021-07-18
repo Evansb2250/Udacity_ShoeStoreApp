@@ -109,6 +109,7 @@ class Login_Screen : Fragment() {
 
     private fun logUserIn(){
         findNavController().navigate(Login_ScreenDirections.actionLoginScreenToWelcomeScreen())
+        viewModel.restoreLoginState()
     }
 
 }

@@ -95,7 +95,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
             android:gravity="center"
-            android:text="@string/welcomeTextView"
+            android:text="shoes"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             app:layout_constraintBottom_toTopOf="@+id/userNameEdit"
             app:layout_constraintEnd_toEndOf="parent"

@@ -6,7 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
+import com.udacity.shoestore.databinding.FragmentInstructionScreenBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,6 +23,7 @@ import com.udacity.shoestore.R
  */
 class Instruction_Screen : Fragment() {
 
+    private lateinit var binding: FragmentInstructionScreenBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,10 +31,16 @@ class Instruction_Screen : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        (activity as AppCompatActivity?)!!.supportActionBar?.show()
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_instruction__screen, container, false)
 
 
-        return inflater.inflate(R.layout.fragment_instruction__screen, container, false)
+        binding.button.setOnClickListener{
+            findNavController().navigate(Instruction_ScreenDirections.actionInstructionScreen2ToShoeListing())
+        }
+
+
+
+        return binding.root
     }
 
 

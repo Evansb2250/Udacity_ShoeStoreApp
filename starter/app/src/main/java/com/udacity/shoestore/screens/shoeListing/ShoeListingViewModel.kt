@@ -3,9 +3,11 @@ package com.udacity.shoestore.screens.shoeListing
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.udacity.shoestore.models.Shoe
+import java.lang.IllegalArgumentException
 
-class ShoeListingViewModel : ViewModel() {
+class ShoeListingViewModel() : ViewModel() {
 
     private var _shoeList = ArrayList<Shoe>()
     var shoeList: LiveData<MutableList<Shoe>>
@@ -26,5 +28,9 @@ class ShoeListingViewModel : ViewModel() {
         this.value = this.value
     }
 }
+
+
+
+
 
 

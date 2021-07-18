@@ -35,7 +35,7 @@ class Welcome_Screen : Fragment() {
 
 
         binding.imageButton.setOnClickListener{
-     //       findNavController().navigate(Welcome_ScreenDirections.())
+        findNavController().navigate(Welcome_ScreenDirections.actionWelcomeScreenToInstructionScreen2())
         }
 
 
