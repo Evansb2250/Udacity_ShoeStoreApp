@@ -11,10 +11,9 @@ class ShoeListingViewModel : ViewModel() {
     var shoeList: LiveData<MutableList<Shoe>>
 
 
-init {
-    shoeList = MutableLiveData(_shoeList)
-}
-
+    init {
+        shoeList = MutableLiveData(_shoeList)
+    }
 
 
     fun addToInventory(shoe:Shoe){

@@ -10,6 +10,10 @@
         <variable
             name="viewModel"
             type="com.udacity.shoestore.screens.login.LoginScreenViewModel" />
+
+        <variable
+            name="user"
+            type="com.udacity.shoestore.dataStorage.User" />
     </data>
 
 
@@ -49,7 +53,7 @@
                     android:ems="10"
                     android:hint="@string/userNameHint"
                     android:inputType="textPersonName"
-                    android:text="@={viewModel.userName}" />
+                    android:text="@={user.Companion.email}" />
             </TableRow>
 
             <TableRow
@@ -70,7 +74,7 @@
                     android:ems="10"
                     android:hint="@string/passwordEditHint"
                     android:inputType="textPassword"
-                    android:text="@={viewModel.password}" />
+                    android:text="@={user.Companion.password}" />
             </TableRow>
 
             <TableRow
@@ -92,7 +96,7 @@
                     android:ems="10"
                     android:hint="@string/passwordEditHint"
                     android:inputType="textPassword"
-                    android:text="@={viewModel.passwordConfirmation}"
+                    android:text="@={user.Companion.passwordAuthentication}"
                     android:visibility="invisible" />
             </TableRow>
 
@@ -115,6 +119,7 @@
             android:layout_marginEnd="60dp"
             android:layout_marginBottom="48dp"
             android:text="@string/signUpButton"
+            android:onClick="@{()->viewModel.startRegistration()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.39"
@@ -141,7 +146,7 @@
             android:id="@+id/cancelButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:onClick="@{()->viewModel.cancelRegistration()}"
             android:layout_marginEnd="104dp"
             android:text="Cancel"
             android:visibility="invisible"
