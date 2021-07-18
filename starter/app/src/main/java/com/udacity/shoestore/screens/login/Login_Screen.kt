@@ -55,6 +55,7 @@ class Login_Screen : Fragment() {
 
         })
 
+
         viewModel.clearEditText.observe(viewLifecycleOwner, Observer { clearNow ->
             if(clearNow){
                 clearEditTexts()

@@ -81,7 +81,6 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:onClick="@{()->viewModel.startRegistration()}"
-            android:layout_marginTop="4dp"
             android:text="@string/signUpButton"
             app:layout_constraintEnd_toEndOf="@+id/passwordEdit"
             app:layout_constraintHorizontal_bias="0.487"

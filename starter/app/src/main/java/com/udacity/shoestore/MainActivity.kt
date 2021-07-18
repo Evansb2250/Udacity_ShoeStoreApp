@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.screens.instructions.Instruction_Screen
+import com.udacity.shoestore.screens.login.Login_ScreenDirections
 import com.udacity.shoestore.screens.shoeListing.ShoeListingDirections
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
@@ -26,19 +27,15 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        val navController = findNavController(R.id.navigationHost)
 
         this.setSupportActionBar(findViewById(R.id.toolbar))
         this.supportActionBar?.setTitle(R.string.actionBarTitle)
         this.supportActionBar?.show()
-        NavigationUI.setupActionBarWithNavController(this, navController)
+
+
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = this.findNavController(R.id.navigationHost)
 
-        return navController.navigateUp()
-    }
 
 
 

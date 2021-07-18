@@ -3,16 +3,20 @@ package com.udacity.shoestore.screens.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.udacity.shoestore.Util
 import com.udacity.shoestore.constants.CREDENTIALS_ACCEPTED
 import com.udacity.shoestore.constants.LOGGING_IN
 import com.udacity.shoestore.constants.REGISTERING
 
 import com.udacity.shoestore.dataStorage.User
 import com.udacity.shoestore.dataStorage.UserData
+import com.udacity.shoestore.doesPasswordsMatch
+import com.udacity.shoestore.doesUserExist
 import timber.log.Timber
 
 
 class LoginScreenViewModel(private val db: UserData) : ViewModel() {
+    private val utilClass = Util()
 
     //flags for edit text to clear
     private var _clearEditText = MutableLiveData<Boolean>()
@@ -22,14 +26,12 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
         }
 
 
-
     //Message To User
     private var _guiMessage= MutableLiveData<String>()
     var guiMessage:LiveData<String> = _guiMessage
         set(value) {
             field = _guiMessage
         }
-
 
 
     //Watches the state of the login page
@@ -54,17 +56,9 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
     fun restoreLoginState() {_loginState.value = LOGGING_IN }
 
 
-    fun startRegistration(){
-        updateStateToRegistration()
-        User.clear()
-        setClearEditTextToTrue()
-    }
+    fun startRegistration(){ updateStateToRegistration() ; User.clear() ; setClearEditTextToTrue() }
 
-    fun cancelRegistration(){
-        restoreLoginState()
-        User.clear()
-        setClearEditTextToTrue()
-    }
+    fun cancelRegistration(){ restoreLoginState() ; User.clear() ; setClearEditTextToTrue() }
 
 
     fun getUIDetails(){
@@ -72,14 +66,12 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
         checkingRequest()
     }
 
-
-
     fun checkingRequest(){
         if(loginState.value == LOGGING_IN){
             if(db.containsUser(User.email) && db.isValidLogRequest(User.email, User.password))
                 _validLoginRequest.value = CREDENTIALS_ACCEPTED else alertUserRequestFailed()
-        }else
-            createNewUser()
+        }else { createNewUser() }
+
         setClearEditTextToTrue()
         User.clear()
     }
@@ -94,7 +86,7 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
     }
 
     private fun createNewUser() {
-        if(!doesUserExist() && doesPasswordsMatch() && User.email != ""){
+        if(!utilClass.doesUserExist(db) && utilClass.doesPasswordsMatch() && User.email != ""){
               db.createUser(User.email, User.password)
              _validLoginRequest.value = CREDENTIALS_ACCEPTED
         }else{
@@ -104,14 +96,6 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
         }
 
     }
-
-
-
-    private fun doesPasswordsMatch(): Boolean = if(User.password.equals(User.passwordAuthentication)) true else false
-
-
-    private fun doesUserExist() :Boolean =  db.containsUser(User.email)
-
 
     fun resetLoginState() { _validLoginRequest.value = !CREDENTIALS_ACCEPTED }
 

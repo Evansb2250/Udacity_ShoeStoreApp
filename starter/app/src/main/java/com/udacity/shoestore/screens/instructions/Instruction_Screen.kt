@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
@@ -25,6 +26,16 @@ class Instruction_Screen : Fragment() {
 
     private lateinit var binding: FragmentInstructionScreenBinding
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+                  override fun handleOnBackPressed() {
+                // overrides the on back pressed method to navigate back to the shoe list
+                  navigateToShoeList()
+            }
+        })
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,7 +46,7 @@ class Instruction_Screen : Fragment() {
 
 
         binding.button.setOnClickListener{
-            findNavController().navigate(Instruction_ScreenDirections.actionInstructionScreen2ToShoeListing())
+          navigateToShoeList()
         }
 
 
@@ -43,6 +54,9 @@ class Instruction_Screen : Fragment() {
         return binding.root
     }
 
+    private fun navigateToShoeList() {
+        findNavController().navigate(Instruction_ScreenDirections.actionInstructionScreen2ToShoeListing())
+    }
 
 
 }
