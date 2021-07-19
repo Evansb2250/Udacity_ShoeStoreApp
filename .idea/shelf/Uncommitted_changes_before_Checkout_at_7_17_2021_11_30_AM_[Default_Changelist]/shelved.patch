@@ -1,0 +1,491 @@
+Index: starter/app/src/main/res/layout/fragment_welcome__screen.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<layout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    tools:context=\".screens.Welcome_Screen\">\r\n\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:id=\"@+id/welcome_Screen_layout\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\">\r\n\r\n        <TextView\r\n            android:id=\"@+id/textView9\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginStart=\"164dp\"\r\n            android:text=\"Home\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"@+id/textView2\" />\r\n\r\n        <ImageButton\r\n            android:id=\"@+id/homeButton\"\r\n            android:layout_width=\"64dp\"\r\n            android:layout_height=\"40dp\"\r\n            android:layout_marginBottom=\"132dp\"\r\n            android:src=\"@drawable/ic_baseline_home_24\"\r\n            app:layout_constraintBottom_toBottomOf=\"parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintHorizontal_bias=\"0.443\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toBottomOf=\"@+id/textView2\"\r\n            app:layout_constraintVertical_bias=\"0.875\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/textView\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"TextView\"\r\n            android:textAppearance=\"@style/TextAppearance.AppCompat.Display2\"\r\n            app:layout_constraintBottom_toTopOf=\"@+id/imageButton\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\"\r\n            app:layout_constraintVertical_bias=\"0.315\" />\r\n\r\n        <ImageButton\r\n            android:id=\"@+id/imageButton\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginBottom=\"132dp\"\r\n            android:src=\"@drawable/ic_baseline_arrow_forward_24\"\r\n            app:layout_constraintBottom_toBottomOf=\"parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintHorizontal_bias=\"0.779\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toBottomOf=\"@+id/textView2\"\r\n            app:layout_constraintVertical_bias=\"1.0\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/textView2\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"516dp\"\r\n            android:text=\"Instructions\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintHorizontal_bias=\"0.791\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\" />\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n</layout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- starter/app/src/main/res/layout/fragment_welcome__screen.xml	(revision a54e36c619c668f5f183ef008dda3a9530c2fa65)
++++ starter/app/src/main/res/layout/fragment_welcome__screen.xml	(date 1626270838751)
+@@ -5,6 +5,13 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     tools:context=".screens.Welcome_Screen">
+ 
++    <data>
++        <variable
++            name="shoeListingViewModel"
++            type="com.udacity.shoestore.screens.shoeListing.ShoeListingViewModel" />
++    </data>
++
++
+     <androidx.constraintlayout.widget.ConstraintLayout
+         android:id="@+id/welcome_Screen_layout"
+         android:layout_width="match_parent"
+Index: starter/app/src/main/res/navigation/navigation.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<navigation xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/navigation\"\r\n    app:startDestination=\"@id/login_Screen\">\r\n\r\n    <fragment\r\n        android:id=\"@+id/login_Screen\"\r\n        android:name=\"com.udacity.shoestore.screens.login.Login_Screen\"\r\n        android:label=\"login__screen_fragment\"\r\n        tools:layout=\"@layout/login__screen_fragment\" >\r\n        <action\r\n            android:id=\"@+id/action_login_Screen_to_welcome_Screen\"\r\n            app:destination=\"@id/welcome_Screen\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/welcome_Screen\"\r\n        android:name=\"com.udacity.shoestore.screens.Welcome_Screen\"\r\n        android:label=\"fragment_welcome__screen\"\r\n        tools:layout=\"@layout/fragment_welcome__screen\" >\r\n        <action\r\n            android:id=\"@+id/action_welcome_Screen_to_shoeListing\"\r\n            app:destination=\"@id/shoeListing\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/instruction_Screen2\"\r\n        android:name=\"com.udacity.shoestore.screens.instructions.Instruction_Screen\"\r\n        android:label=\"fragment_instruction__screen\"\r\n        tools:layout=\"@layout/fragment_instruction__screen\" >\r\n        <action\r\n            android:id=\"@+id/action_instruction_Screen2_to_shoeListing\"\r\n            app:popUpTo=\"@id/shoeListing\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/shoeListing\"\r\n        android:name=\"com.udacity.shoestore.screens.shoeListing.ShoeListing\"\r\n        android:label=\"ShoeListing\" >\r\n        <action\r\n            android:id=\"@+id/action_shoeListing_to_shoeForm\"\r\n            app:destination=\"@id/shoeForm\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/shoeForm\"\r\n        android:name=\"com.udacity.shoestore.screens.forms.ShoeForm\"\r\n        android:label=\"fragment_shoe_form\"\r\n        tools:layout=\"@layout/fragment_shoe_form\">\r\n        <action\r\n            android:id=\"@+id/action_shoeForm_to_shoeListing\"\r\n            app:destination=\"@id/shoeListing\"\r\n            app:popUpTo=\"@id/shoeListing\" />\r\n    </fragment>\r\n</navigation>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- starter/app/src/main/res/navigation/navigation.xml	(revision a54e36c619c668f5f183ef008dda3a9530c2fa65)
++++ starter/app/src/main/res/navigation/navigation.xml	(date 1626272755392)
+@@ -39,6 +39,9 @@
+         <action
+             android:id="@+id/action_shoeListing_to_shoeForm"
+             app:destination="@id/shoeForm" />
++        <action
++            android:id="@+id/action_shoeListing_to_shoeListingDetailPortaitMode"
++            app:destination="@id/shoeListingDetailPortaitMode" />
+     </fragment>
+     <fragment
+         android:id="@+id/shoeForm"
+@@ -50,4 +53,8 @@
+             app:destination="@id/shoeListing"
+             app:popUpTo="@id/shoeListing" />
+     </fragment>
++    <fragment
++        android:id="@+id/shoeListingDetailPortaitMode"
++        android:name="com.udacity.shoestore.screens.shoeListing.ShoeListingDetailPortaitMode"
++        android:label="ShoeListingDetailPortaitMode" />
+ </navigation>
+\ No newline at end of file
+Index: starter/app/src/main/java/com/udacity/shoestore/Util.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.udacity.shoestore\r\n\r\nimport android.app.Application\r\nimport android.graphics.Color\r\nimport android.os.Build\r\nimport android.view.ViewGroup\r\nimport android.widget.TextView\r\nimport androidx.annotation.RequiresApi\r\nimport androidx.core.content.res.ResourcesCompat\r\nimport com.udacity.shoestore.models.Shoe\r\n\r\nclass Util {\r\n    companion object{\r\n\r\n        @RequiresApi(Build.VERSION_CODES.M)\r\n        fun createTextView(shoe: Shoe, application: Application): TextView{\r\n            val textView = addDataToTextView(TextView(application),shoe,application)\r\n            return textView\r\n        }\r\n\r\n\r\n\r\n        private fun addDataToTextView(textView: TextView, shoe:Shoe,  application: Application) : TextView {\r\n\r\n            val typFace = ResourcesCompat.getFont(application,R.font.aclonica)\r\n            textView.tag = shoe.name\r\n\r\n\r\n            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) { textView.setTextAppearance(R.style.TextAppearance_AppCompat_Display1) }\r\n\r\n            textView.setText(shoe.name)\r\n            textView.setTextColor(Color.parseColor(\"#191515\"))\r\n            textView.setTextSize(35f)\r\n\r\n            textView.layoutParams = createParameters()\r\n            textView.typeface = typFace\r\n            return textView\r\n        }\r\n\r\n\r\n\r\n        private fun createParameters(): ViewGroup.LayoutParams {\r\n            var param = ViewGroup.LayoutParams( ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)\r\n            return param\r\n        }\r\n\r\n\r\n    }\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- starter/app/src/main/java/com/udacity/shoestore/Util.kt	(revision a54e36c619c668f5f183ef008dda3a9530c2fa65)
++++ starter/app/src/main/java/com/udacity/shoestore/Util.kt	(date 1626300190822)
+@@ -12,6 +12,7 @@
+ class Util {
+     companion object{
+ 
++
+         @RequiresApi(Build.VERSION_CODES.M)
+         fun createTextView(shoe: Shoe, application: Application): TextView{
+             val textView = addDataToTextView(TextView(application),shoe,application)
+@@ -23,7 +24,7 @@
+         private fun addDataToTextView(textView: TextView, shoe:Shoe,  application: Application) : TextView {
+ 
+             val typFace = ResourcesCompat.getFont(application,R.font.aclonica)
+-            textView.tag = shoe.name
++            textView.tag = shoe.uniqueId
+ 
+ 
+             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) { textView.setTextAppearance(R.style.TextAppearance_AppCompat_Display1) }
+@@ -34,6 +35,7 @@
+ 
+             textView.layoutParams = createParameters()
+             textView.typeface = typFace
++
+             return textView
+         }
+ 
+Index: starter/app/src/main/res/layout-land/fragment_shoe_listing_detail_portait_mode.xml
+===================================================================
+--- starter/app/src/main/res/layout-land/fragment_shoe_listing_detail_portait_mode.xml	(date 1626273579744)
++++ starter/app/src/main/res/layout-land/fragment_shoe_listing_detail_portait_mode.xml	(date 1626273579744)
+@@ -0,0 +1,145 @@
++<?xml version="1.0" encoding="utf-8"?>
++<layout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools">
++
++    <data>
++        <variable
++            name="shoeViewModel"
++            type="com.udacity.shoestore.screens.shoeListing.ShoeListingViewModel" />
++    </data>
++
++    <androidx.constraintlayout.widget.ConstraintLayout
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:background="#DF7D7D"
++        tools:context=".screens.forms.ShoeForm">
++
++        <!-- TODO: Update blank fragment layout -->
++        <TableLayout
++            android:id="@+id/tableLayout2"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginStart="10dp"
++            android:layout_marginTop="16dp"
++            android:layout_marginEnd="10dp"
++            android:layout_marginBottom="16dp"
++            app:layout_constraintBottom_toBottomOf="parent"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toBottomOf="@+id/textView13"
++            app:layout_constraintVertical_bias="0.17000002">
++
++            <TableRow
++                android:layout_width="match_parent"
++                android:layout_height="match_parent">
++
++                <TextView
++                    android:id="@+id/textView5"
++                    android:layout_width="wrap_content"
++                    android:layout_height="match_parent"
++                    android:layout_marginLeft="@dimen/leftMargin"
++                    android:text="Shoe Name: "
++                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
++                    android:textColor="#FFFFFF" />
++
++                <EditText
++                    android:id="@+id/shoeNameEditText"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:layout_marginLeft="@dimen/marginSize"
++                    android:ems="10"
++                    android:focusable="false"
++                    android:inputType="textPersonName"
++                    android:text="@{shoeViewModel.shoeName}" />
++            </TableRow>
++
++            <TableRow
++                android:layout_width="match_parent"
++                android:layout_height="match_parent">
++
++                <TextView
++                    android:id="@+id/textView8"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:layout_marginLeft="@dimen/leftMargin"
++                    android:text="Company"
++                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
++                    android:textColor="#FFFFFF" />
++
++                <EditText
++                    android:id="@+id/companyNameEditText"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:layout_marginLeft="@dimen/marginSize"
++                    android:ems="10"
++                    android:focusable="false"
++                    android:inputType="textPersonName"
++                    android:text="@{shoeViewModel.companyName}" />
++            </TableRow>
++
++            <TableRow
++                android:layout_width="match_parent"
++                android:layout_height="match_parent">
++
++                <TextView
++                    android:id="@+id/textView10"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:layout_marginLeft="@dimen/leftMargin"
++                    android:text="Size"
++                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
++                    android:textColor="#FFFFFF" />
++
++                <EditText
++                    android:id="@+id/shoeSizeNameEditText"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:layout_marginLeft="@dimen/marginSize"
++                    android:ems="10"
++                    android:focusable="false"
++                    android:inputType="numberDecimal"
++                    android:text="@{shoeViewModel.size}" />
++            </TableRow>
++
++            <TableRow
++                android:layout_width="match_parent"
++                android:layout_height="match_parent">
++
++                <TextView
++                    android:id="@+id/textView11"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:layout_marginLeft="@dimen/leftMargin"
++                    android:text="Description"
++                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
++                    android:textColor="#FFFFFF" />
++
++                <EditText
++                    android:id="@+id/descriptionEditText"
++                    android:layout_width="168dp"
++                    android:layout_height="wrap_content"
++                    android:layout_marginLeft="@dimen/marginSize"
++                    android:ems="10"
++                    android:focusable="false"
++                    android:inputType="textPersonName"
++                    android:text="@{shoeViewModel.description}" />
++
++            </TableRow>
++        </TableLayout>
++
++        <TextView
++            android:id="@+id/textView13"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginStart="60dp"
++            android:layout_marginTop="40dp"
++            android:layout_marginEnd="60dp"
++            android:text="Shoe Details"
++            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toTopOf="parent" />
++
++    </androidx.constraintlayout.widget.ConstraintLayout>
++</layout>
+\ No newline at end of file
+Index: starter/app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">ShoeStore</string>\r\n    <!-- TODO: Remove or change this placeholder text -->\r\n    <string name=\"actionBarTitle\"> </string>\r\n    <string name=\"hello_blank_fragment\">Hello blank fragment</string>\r\n    <string name=\"userNameTextView\">UserName:</string>\r\n    <string name=\"passwordTextView\">Password:</string>\r\n    <string name=\"welcomeTextView\">Welcome!!</string>\r\n    <string name=\"userNameHint\">Username here..</string>\r\n    <string name=\"passwordEditHint\">Enter Password</string>\r\n    <string name=\"signUpButton\"> Click to Create</string>\r\n    <string name=\"loginButton\">Login</string>\r\n    <string name=\"confirmPasswordText\">Re-enter</string>\r\n</resources>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- starter/app/src/main/res/values/strings.xml	(revision a54e36c619c668f5f183ef008dda3a9530c2fa65)
++++ starter/app/src/main/res/values/strings.xml	(date 1626272132236)
+@@ -11,4 +11,9 @@
+     <string name="signUpButton"> Click to Create</string>
+     <string name="loginButton">Login</string>
+     <string name="confirmPasswordText">Re-enter</string>
++    <string name="inventory">Inventory</string>
++    <string name="shoe_name">Shoe Name:</string>
++    <string name="company">Company</string>
++    <string name="size">Size</string>
++    <string name="description">Description</string>
+ </resources>
+Index: starter/app/src/main/java/com/udacity/shoestore/screens/shoeListing/ShoeListingDetailPortaitMode.kt
+===================================================================
+--- starter/app/src/main/java/com/udacity/shoestore/screens/shoeListing/ShoeListingDetailPortaitMode.kt	(date 1626273006624)
++++ starter/app/src/main/java/com/udacity/shoestore/screens/shoeListing/ShoeListingDetailPortaitMode.kt	(date 1626273006624)
+@@ -0,0 +1,40 @@
++package com.udacity.shoestore.screens.shoeListing
++
++import android.os.Bundle
++import androidx.fragment.app.Fragment
++import android.view.LayoutInflater
++import android.view.View
++import android.view.ViewGroup
++import androidx.databinding.DataBindingUtil
++import androidx.fragment.app.activityViewModels
++import com.udacity.shoestore.R
++import com.udacity.shoestore.databinding.FragmentShoeListingDetailPortaitModeBinding
++
++// TODO: Rename parameter arguments, choose names that match
++// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
++private const val ARG_PARAM1 = "param1"
++private const val ARG_PARAM2 = "param2"
++
++/**
++ * A simple [Fragment] subclass.
++ * Use the [ShoeListingDetailPortaitMode.newInstance] factory method to
++ * create an instance of this fragment.
++ */
++class ShoeListingDetailPortaitMode : Fragment() {
++
++    private val  viewModel: ShoeListingViewModel by activityViewModels()
++    private lateinit var binding: FragmentShoeListingDetailPortaitModeBinding
++
++    override fun onCreateView(
++        inflater: LayoutInflater, container: ViewGroup?,
++        savedInstanceState: Bundle?
++    ): View? {
++        // Inflate the layout for this fragment
++        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_listing_detail_portait_mode, container, false)
++        binding.shoeViewModel = viewModel
++        binding.setLifecycleOwner(this)
++
++        return binding.root
++    }
++
++}
+\ No newline at end of file
+Index: starter/app/src/main/res/layout/fragment_shoe_listing_detail_portait_mode.xml
+===================================================================
+--- starter/app/src/main/res/layout/fragment_shoe_listing_detail_portait_mode.xml	(date 1626291458823)
++++ starter/app/src/main/res/layout/fragment_shoe_listing_detail_portait_mode.xml	(date 1626291458823)
+@@ -0,0 +1,164 @@
++<?xml version="1.0" encoding="utf-8"?>
++<layout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools">
++
++    <data>
++        <variable
++            name="shoeViewModel"
++            type="com.udacity.shoestore.screens.shoeListing.ShoeListingViewModel" />
++    </data>
++
++    <androidx.constraintlayout.widget.ConstraintLayout
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:background="#DF7D7D"
++        tools:context=".screens.forms.ShoeForm">
++
++        <!-- TODO: Update blank fragment layout -->
++
++        <com.google.android.material.floatingactionbutton.FloatingActionButton
++            android:id="@+id/removeButton2"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginTop="82dp"
++            android:clickable="true"
++            android:focusable="true"
++            android:onClick="@{()->shoeViewModel.removeFromInventory()}"
++            app:backgroundTint="#A4925B"
++            app:layout_constraintBottom_toBottomOf="parent"
++            app:layout_constraintEnd_toEndOf="@+id/tableLayout2"
++            app:layout_constraintHorizontal_bias="0.497"
++            app:layout_constraintStart_toStartOf="@+id/tableLayout2"
++            app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
++            app:layout_constraintVertical_bias="0.0"
++            app:srcCompat="@drawable/ic_baseline_remove_24" />
++
++        <TableLayout
++            android:id="@+id/tableLayout2"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginStart="10dp"
++            android:layout_marginTop="16dp"
++            android:layout_marginEnd="10dp"
++            android:layout_marginBottom="16dp"
++            app:layout_constraintBottom_toBottomOf="parent"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintHorizontal_bias="0.27"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toBottomOf="@+id/textView13"
++            app:layout_constraintVertical_bias="0.17000002">
++
++            <TableRow
++                android:layout_width="match_parent"
++                android:layout_height="match_parent">
++
++                <TextView
++                    android:id="@+id/textView5"
++                    android:layout_width="wrap_content"
++                    android:layout_height="match_parent"
++                    android:layout_marginLeft="@dimen/leftMargin"
++                    android:text="Shoe Name: "
++                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
++                    android:textColor="#FFFFFF" />
++
++                <EditText
++                    android:id="@+id/shoeNameEditText"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:layout_marginLeft="@dimen/marginSize"
++                    android:ems="10"
++                    android:focusable="false"
++                    android:inputType="textPersonName"
++                    android:text="@{shoeViewModel.shoeName}" />
++            </TableRow>
++
++            <TableRow
++                android:layout_width="match_parent"
++                android:layout_height="match_parent">
++
++                <TextView
++                    android:id="@+id/textView8"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:layout_marginLeft="@dimen/leftMargin"
++                    android:text="Company"
++                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
++                    android:textColor="#FFFFFF" />
++
++                <EditText
++                    android:id="@+id/companyNameEditText"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:layout_marginLeft="@dimen/marginSize"
++                    android:ems="10"
++                    android:focusable="false"
++                    android:inputType="textPersonName"
++                    android:text="@{shoeViewModel.companyName}" />
++            </TableRow>
++
++            <TableRow
++                android:layout_width="match_parent"
++                android:layout_height="match_parent">
++
++                <TextView
++                    android:id="@+id/textView10"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:layout_marginLeft="@dimen/leftMargin"
++                    android:text="Size"
++                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
++                    android:textColor="#FFFFFF" />
++
++                <EditText
++                    android:id="@+id/shoeSizeNameEditText"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:layout_marginLeft="@dimen/marginSize"
++                    android:ems="10"
++                    android:focusable="false"
++                    android:inputType="numberDecimal"
++                    android:text="@{shoeViewModel.size}" />
++            </TableRow>
++
++            <TableRow
++                android:layout_width="match_parent"
++                android:layout_height="match_parent">
++
++                <TextView
++                    android:id="@+id/textView11"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:layout_marginLeft="@dimen/leftMargin"
++                    android:text="Description"
++                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
++                    android:textColor="#FFFFFF" />
++
++                <EditText
++                    android:id="@+id/descriptionEditText"
++                    android:layout_width="168dp"
++                    android:layout_height="wrap_content"
++                    android:layout_marginLeft="@dimen/marginSize"
++                    android:ems="10"
++                    android:focusable="false"
++                    android:inputType="textPersonName"
++                    android:text="@{shoeViewModel.description}" />
++
++            </TableRow>
++        </TableLayout>
++
++        <TextView
++            android:id="@+id/textView13"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginStart="60dp"
++            android:layout_marginTop="72dp"
++            android:layout_marginEnd="60dp"
++            android:text="Shoe Details"
++            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toTopOf="parent" />
++
++    </androidx.constraintlayout.widget.ConstraintLayout>
++</layout>
+\ No newline at end of file
+Index: starter/app/src/main/java/com/udacity/shoestore/models/Shoe.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.udacity.shoestore.models\r\n\r\nimport android.os.Parcelable\r\nimport kotlinx.android.parcel.Parcelize\r\n\r\n@Parcelize\r\ndata class Shoe(var name: String, var size: Double, var company: String, var description: String,\r\n                val images: List<String> = mutableListOf()) : Parcelable\r\n\r\n\r\ndata class User(var email: String, var password: String, var listOfShoes: List<Shoe>)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- starter/app/src/main/java/com/udacity/shoestore/models/Shoe.kt	(revision a54e36c619c668f5f183ef008dda3a9530c2fa65)
++++ starter/app/src/main/java/com/udacity/shoestore/models/Shoe.kt	(date 1626270402188)
+@@ -5,7 +5,7 @@
+ 
+ @Parcelize
+ data class Shoe(var name: String, var size: Double, var company: String, var description: String,
+-                val images: List<String> = mutableListOf()) : Parcelable
++                val images: List<String> = mutableListOf(), val uniqueId : Int) : Parcelable
+ 
+ 
+ data class User(var email: String, var password: String, var listOfShoes: List<Shoe>)
+\ No newline at end of file
