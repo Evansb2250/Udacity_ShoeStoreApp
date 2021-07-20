@@ -16,6 +16,8 @@ import com.udacity.shoestore.databinding.FragmentShoeFormBinding
 import com.udacity.shoestore.globalVariables.EditTextVar
 import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.screens.shoeListing.ShoeListingViewModel
+import kotlinx.coroutines.flow.callbackFlow
+import androidx.activity.OnBackPressedCallback as OnBackPressedCallback
 
 
 /**
@@ -29,6 +31,18 @@ class ShoeForm : Fragment() {
     private lateinit var binding: FragmentShoeFormBinding
     private lateinit var viewModel: ShoeFormViewModel
     private val sharedViewModel:ShoeListingViewModel by activityViewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        //overrides the onBackPress to erase any entry added by the user
+        activity?.onBackPressedDispatcher?.addCallback(this, object:OnBackPressedCallback(true){
+            override fun handleOnBackPressed(){
+                EditTextVar.clear()
+                findNavController().navigate(ShoeFormDirections.actionShoeFormToShoeListing())
+            }
+        })
+    }
 
 
     override fun onCreateView(
