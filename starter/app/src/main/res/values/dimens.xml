@@ -2,4 +2,5 @@
 <resources>
     <dimen name="marginSize">20dp</dimen>
     <dimen name="leftMargin">10dp</dimen>
+    <dimen name="evenMargin">10dp</dimen>
 </resources>
