@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="@dimen/evenMargin">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -20,9 +19,9 @@
         android:id="@+id/login_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screens.login.Login_Screen"
+        android:background="@color/colorPrimary"
 
-        >
+        tools:context=".screens.login.Login_Screen">
 
         <Button
             android:id="@+id/signUpButton"
@@ -42,6 +41,7 @@
             android:layout_width="413dp"
             android:layout_height="108dp"
             android:layout_marginBottom="76dp"
+            android:background="#FFFFFF"
             android:gravity="center"
             android:text="shoes"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"

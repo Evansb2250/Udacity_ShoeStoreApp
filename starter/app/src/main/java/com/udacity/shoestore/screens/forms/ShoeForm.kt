@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeFormBinding
+import com.udacity.shoestore.globalVariables.EditTextVar
 import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.screens.shoeListing.ShoeListingViewModel
 
@@ -23,6 +24,7 @@ import com.udacity.shoestore.screens.shoeListing.ShoeListingViewModel
  * create an instance of this fragment.
  */
 class ShoeForm : Fragment() {
+
 
     private lateinit var binding: FragmentShoeFormBinding
     private lateinit var viewModel: ShoeFormViewModel
@@ -60,6 +62,8 @@ class ShoeForm : Fragment() {
         val shoeObj = viewModel.getShoe()
         if (shoeObj != null) {
             sharedViewModel.addToInventory(shoeObj)
+            viewModel.incrementBarCode()
+            EditTextVar.clear()
             findNavController().navigate(ShoeFormDirections.actionShoeFormToShoeListing())
         }
     }

@@ -8,9 +8,6 @@ class UserData {
      //   private var userLoggedIn:?User= null
     }
 
-
-
-
     fun isValidLogRequest(email:String, password: String):Boolean =
          if(users.containsKey(email) && users.get(email).equals(password)) true else false
 

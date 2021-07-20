@@ -41,10 +41,10 @@ import timber.log.Timber
 class ShoeListing : Fragment() {
 
 
-    private var screenOrientation: Int = -1
+
 
     //Creates a shared ViewModel
-    private val  viewModel: ShoeListingViewModel by activityViewModels()
+    private val viewModel: ShoeListingViewModel by activityViewModels()
     private lateinit var binding: FragmentShoeListingBinding
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -54,40 +54,45 @@ class ShoeListing : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_listing, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_listing, container, false)
 
 
 
 
         viewModel.shoeList.observe(viewLifecycleOwner, Observer { listOfShoes ->
-            listOfShoes.forEach {
-                val textView = Util.createTextView(it, requireActivity().application)
+
+            val listOfTextViews = Util.createTextViewList(
+                listOfShoes.toList(),
+                requireActivity().application,
+                ArrayList<TextView>()
+            )
+
+
+            listOfTextViews.forEach { textView ->
                 createOnClickTV(textView)
                 binding.linearLayout.addView(textView)
             }
+
         })
 
 
         setUpFloatingActionButtons()
-        getScreenOrientation()
-
-
-
         setHasOptionsMenu(true)
         return binding.root
     }
 
 
+
+
+
+
+
+
     private fun setUpFloatingActionButtons() {
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(ShoeListingDirections.actionShoeListingToShoeForm())
-         }
-    }
-
-
-    private fun getScreenOrientation() {
-        val orientation = activity?.getResources()?.getConfiguration()?.orientation
-        screenOrientation = if (orientation == PORTRAIT) PORTRAIT else LANDSCAPE
+        }
     }
 
 
@@ -103,14 +108,11 @@ class ShoeListing : Fragment() {
     }
 
 
-    private fun createOnClickTV(textView: TextView){
-        textView.setOnClickListener{
-            Toast.makeText(requireContext(),it.tag.toString(), Toast.LENGTH_SHORT).show()
+    private fun createOnClickTV(textView: TextView) {
+        textView.setOnClickListener {
+            Toast.makeText(requireContext(), it.tag.toString(), Toast.LENGTH_SHORT).show()
         }
     }
-
-
-
 
 
 }

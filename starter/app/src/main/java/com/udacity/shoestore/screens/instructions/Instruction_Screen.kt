@@ -26,16 +26,6 @@ class Instruction_Screen : Fragment() {
 
     private lateinit var binding: FragmentInstructionScreenBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
-                  override fun handleOnBackPressed() {
-                // overrides the on back pressed method to navigate back to the shoe list
-                  navigateToShoeList()
-            }
-        })
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

@@ -39,9 +39,6 @@ class Welcome_Screen : Fragment() {
         }
 
 
-        binding.homeButton.setOnClickListener{
-            findNavController().navigate(Welcome_ScreenDirections.actionWelcomeScreenToShoeListing())
-        }
 
       return binding.root
     }

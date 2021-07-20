@@ -21,11 +21,6 @@
         android:label="fragment_welcome__screen"
         tools:layout="@layout/fragment_welcome__screen" >
         <action
-            android:id="@+id/action_welcome_Screen_to_shoeListing"
-            app:destination="@id/shoeListing"
-            app:popUpToInclusive="true"
-            app:popUpTo="@id/welcome_Screen" />
-        <action
             android:id="@+id/action_welcome_Screen_to_instruction_Screen2"
             app:destination="@id/instruction_Screen2" />
     </fragment>

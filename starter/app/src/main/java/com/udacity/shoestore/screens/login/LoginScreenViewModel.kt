@@ -12,7 +12,6 @@ import com.udacity.shoestore.dataStorage.User
 import com.udacity.shoestore.dataStorage.UserData
 import com.udacity.shoestore.doesPasswordsMatch
 import com.udacity.shoestore.doesUserExist
-import timber.log.Timber
 
 
 class LoginScreenViewModel(private val db: UserData) : ViewModel() {
@@ -86,7 +85,7 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
     }
 
     private fun createNewUser() {
-        if(!utilClass.doesUserExist(db) && utilClass.doesPasswordsMatch() && User.email != ""){
+        if(!doesUserExist(db) && doesPasswordsMatch() && User.email != ""){
               db.createUser(User.email, User.password)
              _validLoginRequest.value = CREDENTIALS_ACCEPTED
         }else{

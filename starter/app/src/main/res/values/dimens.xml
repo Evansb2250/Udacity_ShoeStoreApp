@@ -3,4 +3,5 @@
     <dimen name="marginSize">20dp</dimen>
     <dimen name="leftMargin">10dp</dimen>
     <dimen name="evenMargin">10dp</dimen>
+    <dimen name="fixed_edit_width">100dp</dimen>
 </resources>

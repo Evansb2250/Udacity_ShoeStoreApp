@@ -14,26 +14,23 @@ import com.udacity.shoestore.models.Shoe
 class Util {
     companion object{
 
+
         @RequiresApi(Build.VERSION_CODES.M)
-        fun createTextView(shoe: Shoe, application: Application): TextView{
-            val textView = addDataToTextView(TextView(application),shoe,application)
-            return textView
+        fun createTextViewList(shoes: List<Shoe>, application: Application, newList: ArrayList<TextView>): ArrayList<TextView>{
+            for(item in shoes){
+                newList.add(addDataToTextView(TextView(application),item,application))
+            }
+            return newList
         }
-
-
 
         private fun addDataToTextView(textView: TextView, shoe:Shoe,  application: Application) : TextView {
 
             val typFace = ResourcesCompat.getFont(application,R.font.aclonica)
-            textView.tag = shoe.name
-
-
+            textView.tag = shoe.uniqueId
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) { textView.setTextAppearance(R.style.TextAppearance_AppCompat_Display1) }
-
-            textView.setText("${shoe.name} ${shoe.company}  ${shoe.size.toString()}")
+            textView.setText("${shoe.name}")
             textView.setTextColor(Color.parseColor("#191515"))
-            textView.setTextSize(20f)
-
+            textView.setTextSize(13f)
             textView.layoutParams = createParameters()
             textView.typeface = typFace
             return textView
@@ -52,8 +49,8 @@ class Util {
 
 
 
- fun Util.doesPasswordsMatch(): Boolean = if(User.password.equals(User.passwordAuthentication)) true else false
- fun Util.doesUserExist(db: UserData) :Boolean =  db.containsUser(User.email)
+ fun doesPasswordsMatch(): Boolean = if(User.password.equals(User.passwordAuthentication)) true else false
+ fun doesUserExist(db: UserData) :Boolean =  db.containsUser(User.email)
 
 
 

@@ -5,6 +5,9 @@
         <variable
             name="shoeViewModel"
             type="com.udacity.shoestore.screens.forms.ShoeFormViewModel" />
+        <variable
+            name="data"
+            type="com.udacity.shoestore.globalVariables.EditTextVar" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -45,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/marginSize"
-                android:text="@={shoeViewModel.shoeName}"
+                android:text="@={data.Companion.shoeName}"
                 android:ems="10"
                 android:inputType="textPersonName" />
         </TableRow>
@@ -68,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/marginSize"
-                android:text="@={shoeViewModel.companyName}"
+                android:text="@={data.Companion.companyName}"
                 android:ems="10"
                 android:inputType="textPersonName" />
         </TableRow>
@@ -92,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/marginSize"
                 android:ems="10"
-                android:text="@={shoeViewModel.shoeSizeString}"
+                android:text="@={data.Companion.shoeSizeString}"
                 android:inputType="numberDecimal" />
         </TableRow>
 
@@ -114,7 +117,7 @@
                 android:layout_width="168dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/marginSize"
-                android:text="@={shoeViewModel.shoeDiscription}"
+                android:text="@={data.Companion.shoeDiscription}"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
