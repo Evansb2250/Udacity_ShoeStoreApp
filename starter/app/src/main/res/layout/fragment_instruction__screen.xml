@@ -5,14 +5,14 @@
     <data>
         <variable
             name="instructions"
-            type="com.udacity.shoestore.screens.instructions.Instruction_Screen" />
+            type="com.udacity.shoestore.screens.instructions.InstructionScreen" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/instruction_Screen2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.instructions.Instruction_Screen">
+    tools:context=".screens.instructions.InstructionScreen">
 
     <TextView
         android:id="@+id/textView15"

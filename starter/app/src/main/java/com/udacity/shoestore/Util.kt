@@ -28,7 +28,7 @@ class Util {
             val typFace = ResourcesCompat.getFont(application,R.font.aclonica)
             textView.tag = shoe.uniqueId
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) { textView.setTextAppearance(R.style.TextAppearance_AppCompat_Display1) }
-            textView.setText("${shoe.name}")
+            textView.setText(shoe.name)
             textView.setTextColor(Color.parseColor("#191515"))
             textView.setTextSize(13f)
             textView.layoutParams = createParameters()
@@ -37,10 +37,11 @@ class Util {
         }
 
 
-
         private fun createParameters(): ViewGroup.LayoutParams {
-            var param = ViewGroup.LayoutParams( ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-            return param
+            return ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
         }
 
 
@@ -49,7 +50,7 @@ class Util {
 
 
 
- fun doesPasswordsMatch(): Boolean = if(User.password.equals(User.passwordAuthentication)) true else false
+ fun doesPasswordsMatch(): Boolean = User.password.equals(User.passwordAuthentication)
  fun doesUserExist(db: UserData) :Boolean =  db.containsUser(User.email)
 
 

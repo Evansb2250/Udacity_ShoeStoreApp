@@ -3,28 +3,20 @@ package com.udacity.shoestore.screens.shoeListing
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.R
 import com.udacity.shoestore.Util
-import com.udacity.shoestore.constants.LANDSCAPE
-import com.udacity.shoestore.constants.PORTRAIT
+
 import com.udacity.shoestore.databinding.FragmentShoeListingBinding
-import com.udacity.shoestore.models.Shoe
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_shoe_listing.*
 import timber.log.Timber
@@ -40,9 +32,6 @@ import timber.log.Timber
  */
 class ShoeListing : Fragment() {
 
-
-
-
     //Creates a shared ViewModel
     private val viewModel: ShoeListingViewModel by activityViewModels()
     private lateinit var binding: FragmentShoeListingBinding
@@ -52,22 +41,24 @@ class ShoeListing : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_listing, container, false)
 
+        binding.viewModel = viewModel
+        binding.setLifecycleOwner(this)
 
 
-
-        viewModel.shoeList.observe(viewLifecycleOwner, Observer { listOfShoes ->
-
+        viewModel.shoeListLiveData.observe(viewLifecycleOwner, Observer { listOfShoes ->
             val listOfTextViews = Util.createTextViewList(
                 listOfShoes.toList(),
                 requireActivity().application,
-                ArrayList<TextView>()
+                ArrayList()
             )
 
+            //Clear list text Views
+            binding.linearLayout.removeAllViews()
 
             listOfTextViews.forEach { textView ->
                 createOnClickTV(textView)
@@ -76,21 +67,21 @@ class ShoeListing : Fragment() {
 
         })
 
+        binding.removeButton?.setOnClickListener{viewModel.deleteItem()}
 
         setUpFloatingActionButtons()
         setHasOptionsMenu(true)
+
+
+
+
         return binding.root
     }
 
 
 
-
-
-
-
-
     private fun setUpFloatingActionButtons() {
-        binding.floatingActionButton.setOnClickListener {
+        binding.addShoeButton.setOnClickListener {
             findNavController().navigate(ShoeListingDirections.actionShoeListingToShoeForm())
         }
     }
@@ -110,7 +101,7 @@ class ShoeListing : Fragment() {
 
     private fun createOnClickTV(textView: TextView) {
         textView.setOnClickListener {
-            Toast.makeText(requireContext(), it.tag.toString(), Toast.LENGTH_SHORT).show()
+            viewModel.displayItem(it.tag.toString().toInt())
         }
     }
 

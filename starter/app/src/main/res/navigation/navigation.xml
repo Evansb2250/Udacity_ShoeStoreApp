@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/login_Screen">
+    app:startDestination="@id/shoeListing">
 
     <fragment
         android:id="@+id/login_Screen"
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/instruction_Screen2"
-        android:name="com.udacity.shoestore.screens.instructions.Instruction_Screen"
+        android:name="com.udacity.shoestore.screens.instructions.InstructionScreen"
         android:label="fragment_instruction__screen">
         <action
             android:id="@+id/action_instruction_Screen2_to_shoeListing"

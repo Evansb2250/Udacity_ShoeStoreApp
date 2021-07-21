@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.udacity.shoestore.screens.shoeListing.ShoeListingViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -11,7 +17,7 @@
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/addShoeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -20,45 +26,10 @@
             app:backgroundTint="#E6E0CC"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.123"
+            app:layout_constraintHorizontal_bias="0.335"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-            app:layout_constraintVertical_bias="0.174" />
-
-        <TableLayout
-            android:id="@+id/tableLayout2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/scrollView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView7"
-            app:layout_constraintVertical_bias="0.17000002">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </TableRow>
-        </TableLayout>
+            app:layout_constraintVertical_bias="0.563" />
 
         <ScrollView
             android:id="@+id/scrollView2"
@@ -114,9 +85,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:focusable="false"
+                android:text="@{viewModel.currentShoe.name}"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="" />
+                />
 
             <TextView
                 android:id="@+id/textView8"
@@ -134,9 +107,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:focusable="false"
+                android:text="@{viewModel.currentShoe.company}"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="" />
+                 />
 
             <TextView
                 android:id="@+id/textView10"
@@ -156,7 +131,8 @@
                 android:layout_marginBottom="10dp"
                 android:ems="10"
                 android:inputType="numberDecimal"
-                android:text="" />
+                android:focusable="false"
+                android:text="@{viewModel.currentShoe.shoeSizeString}" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -175,7 +151,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="" />
+                android:focusable="false"
+                android:text="@{viewModel.currentShoe.description}" />
         </LinearLayout>
 
         <TextView
@@ -210,6 +187,16 @@
             app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/removeButton"
+            android:layout_width="71dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="92dp"
+            app:backgroundTint="#A4925B"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/addShoeButton"
+            app:srcCompat="@drawable/ic_baseline_remove_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

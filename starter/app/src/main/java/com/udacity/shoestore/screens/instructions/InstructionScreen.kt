@@ -1,14 +1,11 @@
 package com.udacity.shoestore.screens.instructions
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentInstructionScreenBinding
@@ -19,17 +16,17 @@ import com.udacity.shoestore.databinding.FragmentInstructionScreenBinding
 
 /**
  * A simple [Fragment] subclass.
- * Use the [Instruction_Screen.newInstance] factory method to
+ * Use the [InstructionScreen.newInstance] factory method to
  * create an instance of this fragment.
  */
-class Instruction_Screen : Fragment() {
+class InstructionScreen : Fragment() {
 
     private lateinit var binding: FragmentInstructionScreenBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_instruction__screen, container, false)
@@ -45,7 +42,7 @@ class Instruction_Screen : Fragment() {
     }
 
     private fun navigateToShoeList() {
-        findNavController().navigate(Instruction_ScreenDirections.actionInstructionScreen2ToShoeListing())
+        findNavController().navigate(InstructionScreenDirections.actionInstructionScreen2ToShoeListing())
     }
 
 

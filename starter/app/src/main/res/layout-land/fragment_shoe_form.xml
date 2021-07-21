@@ -4,15 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="shoeViewModel"
             type="com.udacity.shoestore.screens.forms.ShoeFormViewModel" />
-
         <variable
             name="data"
             type="com.udacity.shoestore.globalVariables.EditTextVar" />
-
     </data>
 
 

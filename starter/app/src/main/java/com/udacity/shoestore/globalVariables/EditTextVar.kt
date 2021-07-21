@@ -3,7 +3,7 @@ package com.udacity.shoestore.globalVariables
 class EditTextVar {
 
     companion object {
-        var shoeName: String = ""
+        var shoeName = ""
         var companyName: String = ""
         var shoeSize: Double = 0.0
         var shoeDiscription: String = ""

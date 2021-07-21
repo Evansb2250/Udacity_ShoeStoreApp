@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.udacity.shoestore.screens.shoeListing.ShoeListingViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -10,12 +16,11 @@
         tools:context=".screens.shoeListing.ShoeListing">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/addShoeButton"
             android:layout_width="39dp"
             android:layout_height="43dp"
             android:layout_marginStart="84dp"
             android:layout_marginBottom="56dp"
-            android:clickable="true"
             android:src="@drawable/ic_add"
             app:backgroundTint="#A4925B"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -120,7 +125,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/marginSize"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:focusable="false"
+                    android:inputType="textPersonName"
+                    android:text="@={viewModel.currentShoe.name}" />
             </TableRow>
 
             <TableRow
@@ -139,9 +146,11 @@
                     android:id="@+id/companyNameEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/marginSize"
+                    android:layout_marginStart="@dimen/marginSize"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:focusable="false"
+                    android:inputType="textPersonName"
+                    android:text="@={viewModel.currentShoe.company}" />
             </TableRow>
 
             <TableRow
@@ -162,7 +171,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/marginSize"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:focusable="false"
+                    android:inputType="textPersonName"
+                    android:text="@{viewModel.currentShoe.shoeSizeString}" />
             </TableRow>
 
             <TableRow
@@ -183,21 +194,22 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/marginSize"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:focusable="false"
+                    android:inputType="textPersonName"
+                    android:text="@{viewModel.currentShoe.description}" />
 
             </TableRow>
         </TableLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton3"
+            android:id="@+id/removeButton"
             android:layout_width="44dp"
             android:layout_height="46dp"
             android:layout_marginEnd="520dp"
-            android:clickable="true"
             app:backgroundTint="#A4925B"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/floatingActionButton"
-            app:srcCompat="@drawable/ic_baseline_remove_24" />
+            app:layout_constraintTop_toTopOf="@+id/addShoeButton"
+            app:srcCompat="@drawable/ic_baseline_remove_24"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

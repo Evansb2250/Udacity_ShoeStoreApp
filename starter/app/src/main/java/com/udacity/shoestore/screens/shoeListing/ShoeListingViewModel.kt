@@ -3,59 +3,95 @@ package com.udacity.shoestore.screens.shoeListing
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.udacity.shoestore.globalVariables.EditTextVar
 import com.udacity.shoestore.models.Shoe
-import java.lang.IllegalArgumentException
+import timber.log.Timber
 
-class ShoeListingViewModel() : ViewModel() {
+class ShoeListingViewModel : ViewModel() {
 
-    private var itemSelected = -1;
+    private var itemSelected = -1
+
+    private var _currentShoe = MutableLiveData<Shoe>()
+    var currentShoe: LiveData<Shoe> = _currentShoe
+        set(value) {
+            field = _currentShoe
+        }
 
 
-    private var _shoeList = ArrayList<Shoe>()
-    var shoeList: LiveData<MutableList<Shoe>>
+
+
+    private val shoeList = ArrayList<Shoe>()
+    private val _shoeListLiveData = MutableLiveData<List<Shoe>>()
+    var shoeListLiveData: LiveData<List<Shoe>> get()= _shoeListLiveData
 
 
     init {
-        shoeList = MutableLiveData(_shoeList)
+        shoeListLiveData = MutableLiveData(shoeList)
     }
-
 
     fun addToInventory(shoe: Shoe) {
         //check to see if it is in the list
-        _shoeList.add(shoe)
-        shoeList = MutableLiveData(_shoeList)
+        shoeList.add(shoe)
+        updateShoeList()
     }
 
-    fun <T> MutableLiveData<T>.notifyObserver() {
-        this.value = this.value
-    }
-
-
-    fun displayItem(id: Int) {
-        for (shoe in _shoeList) {
-            if (shoe.uniqueId == id) {
-                initializeVar(shoe)
+    fun deleteItem(){
+        var index = 0
+        while(shoeList != null && index < shoeList.size ){
+            if(shoeList.get(index).uniqueId == itemSelected){
+                  deletIndex(index)
+                break
             }
+            index += 1
         }
     }
 
 
+    fun displayItem(id: Int) {
+        for ( shoe in shoeList) {
+            if (shoe.uniqueId == id) {
+                itemSelected = shoe.uniqueId
+                initializeVar(shoe)
+            }
+
+        }
+    }
 
 
     private fun initializeVar(shoe: Shoe) {
-        EditTextVar.shoeName = shoe.name
-        EditTextVar.companyName = shoe.company
-        EditTextVar.shoeSizeString = shoe.size.toString()
-        EditTextVar.shoeDiscription = shoe.description
-
+        _currentShoe.value = shoe
         //indicates the most recent item that is selected
         itemSelected = shoe.uniqueId
     }
 
 
+
+
+
+
+   private fun deletIndex(index:Int){
+       shoeList.removeAt(index)
+       itemSelected = -1
+       _currentShoe.value = clearShoeObject()
+       updateShoeList()
+    }
+
+
+
+
+    private fun updateShoeList() {
+        _shoeListLiveData.value  = shoeList
+    }
+
+
+
+
+    private fun clearShoeObject():Shoe{
+        return Shoe("",0.0,"","",uniqueId = -1,shoeSizeString = "")
+    }
+
 }
+
+
 
 
 
