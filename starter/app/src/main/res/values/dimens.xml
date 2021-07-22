@@ -4,4 +4,9 @@
     <dimen name="leftMargin">10dp</dimen>
     <dimen name="evenMargin">10dp</dimen>
     <dimen name="fixed_edit_width">100dp</dimen>
+    <dimen name="normalTextSize">25sp</dimen>
+    <dimen name="shoeTextSize">15sp</dimen>
+    <dimen name="table_margin_center">20dp</dimen>
+    <dimen name="table_margin_landscape">10dp</dimen>
+    <dimen name="headingSize">15</dimen>
 </resources>

@@ -21,7 +21,8 @@
         android:id="@+id/login_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_vertical">
+        android:layout_gravity="center_vertical"
+        android:background="@color/appBackgroundColour">
 
 
         <TableLayout
@@ -43,8 +44,8 @@
                     android:id="@+id/userNameTextView"
                     android:layout_width="135dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/userNameTextView"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                    style="@style/normalTextStyle"
+                    android:text="@string/userNameTextView" />
 
                 <EditText
                     android:id="@+id/userNameEdit"
@@ -65,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/passwordTextView"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                    style="@style/normalTextStyle" />
 
                 <EditText
                     android:id="@+id/passwordEdit"
@@ -86,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/confirmPasswordText"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    style="@style/normalTextStyle"
                     android:visibility="invisible" />
 
                 <EditText
@@ -133,8 +134,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
             android:layout_marginBottom="24dp"
-            android:text="shoes"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:text="@string/soles_inventory"
+            style="@style/headingStyle"
             app:layout_constraintBottom_toTopOf="@+id/tableLayout"
             app:layout_constraintEnd_toEndOf="@+id/tableLayout"
             app:layout_constraintHorizontal_bias="0.498"
@@ -148,7 +149,7 @@
             android:layout_height="wrap_content"
             android:onClick="@{()->viewModel.cancelRegistration()}"
             android:layout_marginEnd="104dp"
-            android:text="Cancel"
+            android:text="@string/cancelButton"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/createButton"
@@ -163,7 +164,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="53dp"
             android:layout_marginEnd="204dp"
-            android:text="Create"
+            android:text="@string/createButton"
             android:onClick="@{()-> viewModel.getUIDetails()}"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"

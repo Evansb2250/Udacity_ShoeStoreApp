@@ -17,6 +17,8 @@ import com.udacity.shoestore.R
 import com.udacity.shoestore.Util
 
 import com.udacity.shoestore.databinding.FragmentShoeListingBinding
+import com.udacity.shoestore.screens.login.Login_Screen
+import com.udacity.shoestore.screens.login.Login_ScreenDirections
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_shoe_listing.*
 import timber.log.Timber
@@ -61,23 +63,18 @@ class ShoeListing : Fragment() {
             binding.linearLayout.removeAllViews()
 
             listOfTextViews.forEach { textView ->
-                createOnClickTV(textView)
-                binding.linearLayout.addView(textView)
+                createOnClickTV(textView); binding.linearLayout.addView(
+                textView
+            )
             }
-
         })
 
-        binding.removeButton?.setOnClickListener{viewModel.deleteItem()}
+        binding.removeButton?.setOnClickListener { viewModel.deleteItem() }
 
         setUpFloatingActionButtons()
         setHasOptionsMenu(true)
-
-
-
-
         return binding.root
     }
-
 
 
     private fun setUpFloatingActionButtons() {
@@ -94,8 +91,13 @@ class ShoeListing : Fragment() {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
-                || super.onOptionsItemSelected(item)
+        return when (item.itemId) {
+            R.id.logOutId -> {
+                navigateToLogin()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 
@@ -105,6 +107,8 @@ class ShoeListing : Fragment() {
         }
     }
 
-
+    private fun navigateToLogin() {
+        findNavController().navigate(ShoeListingDirections.actionShoeListingToLoginScreen())
+    }
 }
 

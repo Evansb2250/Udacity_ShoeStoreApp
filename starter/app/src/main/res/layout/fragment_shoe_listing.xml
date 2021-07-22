@@ -10,9 +10,9 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/appBackgroundColour"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#777070"
         tools:context=".screens.shoeListing.ShoeListing">
 
 
@@ -21,15 +21,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:clickable="true"
             android:src="@drawable/ic_add"
             app:backgroundTint="#E6E0CC"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.335"
+            app:layout_constraintHorizontal_bias="0.321"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-            app:layout_constraintVertical_bias="0.563" />
+            app:layout_constraintVertical_bias="0.75" />
 
         <ScrollView
             android:id="@+id/scrollView2"
@@ -74,55 +73,47 @@
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
-                android:gravity="center"
-                android:text="Shoe name: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#000000" />
+                android:text="@string/shoe_name"
+                style="@style/normalTextStyle"
+             />
 
             <EditText
                 android:id="@+id/shoeNameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:focusable="false"
-                android:text="@{viewModel.currentShoe.name}"
                 android:ems="10"
+                android:focusable="false"
                 android:inputType="textPersonName"
-                />
+                android:text="@{viewModel.currentShoe.name}" />
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:background="#FFFFFF"
-                android:gravity="center"
-                android:text="Company"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#000000" />
+                style="@style/normalTextStyle"
+                android:text="@string/company"
+
+                />
 
             <EditText
                 android:id="@+id/companyNameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:focusable="false"
-                android:text="@{viewModel.currentShoe.company}"
                 android:ems="10"
+                android:focusable="false"
                 android:inputType="textPersonName"
-                 />
+                android:text="@{viewModel.currentShoe.company}" />
 
             <TextView
                 android:id="@+id/textView10"
+                style="@style/normalTextStyle"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:background="#FFFFFF"
-                android:gravity="center"
-                android:text="Size"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#000000" />
+                android:text="@string/size" />
 
             <EditText
                 android:id="@+id/shoeSizeNameEditText"
@@ -130,8 +121,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:ems="10"
-                android:inputType="numberDecimal"
                 android:focusable="false"
+                android:inputType="numberDecimal"
                 android:text="@{viewModel.currentShoe.shoeSizeString}" />
 
             <TextView
@@ -139,31 +130,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:background="#FFFFFF"
-                android:gravity="center"
-                android:text="details:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#000000" />
+                style="@style/normalTextStyle"
+                android:text="@string/description"
+
+                />
 
             <EditText
                 android:id="@+id/descriptionEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:focusable="false"
+                android:inputType="textPersonName"
                 android:text="@{viewModel.currentShoe.description}" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/textView7"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="88dp"
             android:background="#FFFFFF"
+            android:ellipsize="middle"
             android:fontFamily="@font/belleza"
             android:gravity="center"
-            android:text="Inventory"
+            android:rotationX="-21"
+            android:text="@string/invetory"
             android:textAppearance="@style/TextAppearance.AppCompat.Display3"
             android:textColor="#000000"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
@@ -180,7 +172,7 @@
             android:background="#FDFDFD"
             android:fontFamily="@font/arimo"
             android:gravity="center"
-            android:text="Items"
+            android:text="@string/inventoryItems"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"

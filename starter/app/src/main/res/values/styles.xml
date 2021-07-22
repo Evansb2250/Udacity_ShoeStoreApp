@@ -17,11 +17,33 @@
         <item name="windowNoTitle">false</item>
     </style>
 
+    <style name="headingStyle">
+        <item name="android:background">@color/pearl_white</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Display1</item>
+    </style>
+
+    <style name="shoeTextViewStyle">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/customTextColour</item>
+        <item name="android:textSize">@dimen/shoeTextSize</item>
+
+    </style>
+
+    <style name="normalTextStyle">
+        <item name="android:background">@color/white</item>
+        <item name="android:fontFamily">@font/belleza</item>
+        <item name="android:textColor">@color/customTextColour</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
+        <item name="android:textSize">@dimen/normalTextSize</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+
 
 
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

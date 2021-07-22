@@ -16,9 +16,9 @@ class MainActivity : AppCompatActivity() {
 
 
 
-//        this.setSupportActionBar(findViewById(R.id.toolbar))
-//        this.supportActionBar?.setTitle(R.string.actionBarTitle)
-//        this.supportActionBar?.show()
+          this.setSupportActionBar(findViewById(R.id.toolbar))
+          this.supportActionBar?.setTitle(R.string.actionBarTitle)
+          this.supportActionBar?.show()
 
 
     }

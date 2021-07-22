@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/shoeListing">
+    app:startDestination="@id/login_Screen">
 
     <fragment
         android:id="@+id/login_Screen"
@@ -27,7 +27,8 @@
     <fragment
         android:id="@+id/instruction_Screen2"
         android:name="com.udacity.shoestore.screens.instructions.InstructionScreen"
-        android:label="fragment_instruction__screen">
+        android:label="fragment_instruction__screen"
+        tools:layout="@layout/fragment_instruction__screen">
         <action
             android:id="@+id/action_instruction_Screen2_to_shoeListing"
             app:destination="@id/shoeListing"
@@ -37,10 +38,16 @@
     <fragment
         android:id="@+id/shoeListing"
         android:name="com.udacity.shoestore.screens.shoeListing.ShoeListing"
-        android:label="ShoeListing" >
+        android:label="ShoeListing"
+        tools:layout="@layout/fragment_shoe_listing">
         <action
             android:id="@+id/action_shoeListing_to_shoeForm"
             app:destination="@id/shoeForm"
+            app:popUpTo="@id/shoeListing"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_shoeListing_to_login_Screen"
+            app:destination="@id/login_Screen"
             app:popUpTo="@id/shoeListing"
             app:popUpToInclusive="true" />
     </fragment>

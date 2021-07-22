@@ -1,155 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="shoeViewModel"
             type="com.udacity.shoestore.screens.forms.ShoeFormViewModel" />
+
         <variable
             name="data"
             type="com.udacity.shoestore.globalVariables.EditTextVar" />
     </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#BA8F8F"
-    tools:context=".screens.forms.ShoeForm">
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-    <!-- TODO: Update blank fragment layout -->
-    <TableLayout
-        android:id="@+id/tableLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.33"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.17000002">
+        android:layout_height="match_parent"
+        android:background="@color/appBackgroundColour"
+        tools:context=".screens.forms.ShoeForm">
 
-        <TableRow
+        <!-- TODO: Update blank fragment layout -->
+        <TableLayout
+            android:id="@+id/tableLayout2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.33"
+            app:layout_constraintTop_toBottomOf="@+id/textView13"
+            app:layout_constraintVertical_bias="0.17000002">
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
+            <TableRow
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/leftMargin"
-                android:text="Shoe Name: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#FFFFFF" />
+                android:layout_margin="@dimen/table_margin_center">
 
-            <EditText
-                android:id="@+id/shoeNameEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/marginSize"
-                android:text="@={data.Companion.shoeName}"
-                android:ems="10"
-                android:inputType="textPersonName" />
-        </TableRow>
+                <TextView
+                    android:id="@+id/textView5"
+                    style="@style/normalTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/leftMargin"
+                    android:text="@string/shoe_name" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <EditText
+                    android:id="@+id/shoeNameEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/marginSize"
+                    android:background="@color/pearl_white"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="@={data.Companion.shoeName}" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/leftMargin"
-                android:text="Company"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#FFFFFF" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/table_margin_center">
 
-            <EditText
-                android:id="@+id/companyNameEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/marginSize"
-                android:text="@={data.Companion.companyName}"
-                android:ems="10"
-                android:inputType="textPersonName" />
-        </TableRow>
+                <TextView
+                    android:id="@+id/textView8"
+                    style="@style/normalTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/leftMargin"
+                    android:text="@string/company" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <EditText
+                    android:id="@+id/companyNameEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/marginSize"
+                    android:background="@color/pearl_white"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="@={data.Companion.companyName}" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/leftMargin"
-                android:text="Size"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#FFFFFF" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/table_margin_center">
 
-            <EditText
-                android:id="@+id/shoeSizeNameEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/marginSize"
-                android:ems="10"
-                android:text="@={data.Companion.shoeSizeString}"
-                android:inputType="numberDecimal" />
-        </TableRow>
+                <TextView
+                    android:id="@+id/textView10"
+                    style="@style/normalTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/leftMargin"
+                    android:text="@string/size" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <EditText
+                    android:id="@+id/shoeSizeNameEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/marginSize"
+                    android:background="@color/pearl_white"
+                    android:ems="10"
+                    android:inputType="numberDecimal"
+                    android:text="@={data.Companion.shoeSizeString}" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/leftMargin"
-                android:text="Description"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#FFFFFF" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/table_margin_center">
 
-            <EditText
-                android:id="@+id/descriptionEditText"
-                android:layout_width="168dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/marginSize"
-                android:text="@={data.Companion.shoeDiscription}"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                <TextView
+                    android:id="@+id/textView11"
+                    style="@style/normalTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/leftMargin"
+                    android:text="@string/description" />
 
-        </TableRow>
-    </TableLayout>
+                <EditText
+                    android:id="@+id/descriptionEditText"
+                    android:layout_width="168dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/marginSize"
+                    android:background="@color/pearl_white"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="@={data.Companion.shoeDiscription}" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="124dp"
-        android:layout_marginEnd="60dp"
-        android:text="Enter Shoe Details"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            </TableRow>
+        </TableLayout>
 
-    <Button
-        android:id="@+id/submitFormButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="173dp"
-        android:text="Submit"
-        android:onClick="@{()->shoeViewModel.validateUserInput()}"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tableLayout2"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/tableLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
-        app:layout_constraintVertical_bias="0.937" />
+        <TextView
+            android:id="@+id/textView13"
+            style="@style/normalTextStyle"
+            android:layout_width="402dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="124dp"
+            android:text="Enter Shoe Details"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/submitFormButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
+            android:onClick="@{()->shoeViewModel.validateUserInput()}"
+            android:text="Submit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tableLayout2"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="@+id/tableLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
+            app:layout_constraintVertical_bias="0.375" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -19,8 +19,7 @@
         android:id="@+id/login_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
-
+        android:background="@color/appBackgroundColour"
         tools:context=".screens.login.Login_Screen">
 
         <Button
@@ -38,13 +37,11 @@
 
         <TextView
             android:id="@+id/textView4"
+            style="@style/headingStyle"
             android:layout_width="413dp"
-            android:layout_height="108dp"
+            android:layout_height="50dp"
             android:layout_marginBottom="76dp"
-            android:background="#FFFFFF"
-            android:gravity="center"
-            android:text="shoes"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:text="@string/soles_inventory"
             app:layout_constraintBottom_toTopOf="@+id/tableLayout3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -71,6 +68,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/userNameTextView"
+                    style="@style/normalTextStyle"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
                 <EditText
@@ -92,6 +90,7 @@
                     android:id="@+id/passwordTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    style="@style/normalTextStyle"
                     android:text="@string/passwordTextView"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -115,7 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/confirmPasswordText"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    style="@style/normalTextStyle"
                     android:visibility="invisible" />
 
                 <EditText
@@ -139,7 +138,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="72dp"
             android:onClick="@{()->viewModel.cancelRegistration()}"
-            android:text="Cancel"
+            android:text="@string/cancelButton"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

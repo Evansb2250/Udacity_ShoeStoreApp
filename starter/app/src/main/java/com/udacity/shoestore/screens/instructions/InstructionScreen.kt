@@ -14,11 +14,7 @@ import com.udacity.shoestore.databinding.FragmentInstructionScreenBinding
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [InstructionScreen.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class InstructionScreen : Fragment() {
 
     private lateinit var binding: FragmentInstructionScreenBinding
@@ -32,11 +28,7 @@ class InstructionScreen : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_instruction__screen, container, false)
 
 
-        binding.button.setOnClickListener{
-          navigateToShoeList()
-        }
-
-
+        binding.button.setOnClickListener{ navigateToShoeList() }
 
         return binding.root
     }
