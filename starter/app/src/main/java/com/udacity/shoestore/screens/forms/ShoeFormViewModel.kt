@@ -12,6 +12,11 @@ class ShoeFormViewModel : ViewModel() {
 
     companion object {
         private var barCode = 0
+
+        //FOR TESTING PURPOSES ONLY
+        fun resetBarCode(){
+              barCode = 0
+        }
     }
 
     private var _isFormRequirementsMet = MutableLiveData<Boolean>()

@@ -159,5 +159,16 @@
             app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
             app:layout_constraintVertical_bias="0.375" />
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="315dp"
+            android:layout_height="107dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.364"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/shoe" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

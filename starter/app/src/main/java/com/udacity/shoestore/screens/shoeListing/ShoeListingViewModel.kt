@@ -65,6 +65,10 @@ class ShoeListingViewModel : ViewModel() {
 
 
 
+  //Test Function
+    fun getListSize():Int{
+        return _shoeListLiveData.value?.size ?:-1
+    }
 
 
 

@@ -12,8 +12,7 @@
         tools:layout="@layout/login__screen_fragment" >
         <action
             android:id="@+id/action_login_Screen_to_welcome_Screen"
-            app:destination="@id/welcome_Screen"
-            app:popUpToInclusive="true" />
+            app:destination="@id/welcome_Screen" />
     </fragment>
     <fragment
         android:id="@+id/welcome_Screen"
@@ -22,7 +21,8 @@
         tools:layout="@layout/fragment_welcome__screen" >
         <action
             android:id="@+id/action_welcome_Screen_to_instruction_Screen2"
-            app:destination="@id/instruction_Screen2" />
+            app:destination="@id/instruction_Screen2"
+            app:popUpTo="@id/login_Screen" />
     </fragment>
     <fragment
         android:id="@+id/instruction_Screen2"
@@ -31,9 +31,7 @@
         tools:layout="@layout/fragment_instruction__screen">
         <action
             android:id="@+id/action_instruction_Screen2_to_shoeListing"
-            app:destination="@id/shoeListing"
-            app:popUpToInclusive="true"
-            app:popUpTo="@id/instruction_Screen2" />
+            app:destination="@id/shoeListing" />
     </fragment>
     <fragment
         android:id="@+id/shoeListing"
@@ -42,14 +40,11 @@
         tools:layout="@layout/fragment_shoe_listing">
         <action
             android:id="@+id/action_shoeListing_to_shoeForm"
-            app:destination="@id/shoeForm"
-            app:popUpTo="@id/shoeListing"
-            app:popUpToInclusive="true" />
+            app:destination="@id/shoeForm" />
         <action
             android:id="@+id/action_shoeListing_to_login_Screen"
             app:destination="@id/login_Screen"
-            app:popUpTo="@id/shoeListing"
-            app:popUpToInclusive="true" />
+           />
     </fragment>
     <fragment
         android:id="@+id/shoeForm"
@@ -59,7 +54,7 @@
         <action
             android:id="@+id/action_shoeForm_to_shoeListing"
             app:destination="@id/shoeListing"
-            app:popUpTo="@id/shoeForm"
+            app:popUpTo="@id/shoeListing"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>
