@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat
+import com.udacity.shoestore.dataStorage.Database
 import com.udacity.shoestore.dataStorage.User
-import com.udacity.shoestore.dataStorage.UserData
 import com.udacity.shoestore.models.Shoe
 
 class Util {
@@ -52,7 +52,7 @@ class Util {
 
 
  fun doesPasswordsMatch(): Boolean = User.password.equals(User.passwordAuthentication)
- fun doesUserExist(db: UserData) :Boolean =  db.containsUser(User.email)
+ fun doesUserExist() :Boolean =  Database.userTable.containsUser(User.email)
 
 
 

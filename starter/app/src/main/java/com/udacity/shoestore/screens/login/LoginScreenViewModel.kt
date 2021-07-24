@@ -3,19 +3,18 @@ package com.udacity.shoestore.screens.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.udacity.shoestore.Util
 import com.udacity.shoestore.constants.CREDENTIALS_ACCEPTED
 import com.udacity.shoestore.constants.LOGGING_IN
 import com.udacity.shoestore.constants.REGISTERING
+import com.udacity.shoestore.dataStorage.Database
 
 import com.udacity.shoestore.dataStorage.User
-import com.udacity.shoestore.dataStorage.UserData
 import com.udacity.shoestore.doesPasswordsMatch
 import com.udacity.shoestore.doesUserExist
 
 
-class LoginScreenViewModel(private val db: UserData) : ViewModel() {
-    private val utilClass = Util()
+class LoginScreenViewModel() : ViewModel() {
+
 
     //flags for edit text to clear
     private var _clearEditText = MutableLiveData<Boolean>()
@@ -67,7 +66,7 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
 
     fun checkingRequest(){
         if(loginState.value == LOGGING_IN){
-            if(db.containsUser(User.email) && db.isValidLogRequest(User.email, User.password))
+            if(Database.userTable.containsUser(User.email) && Database.userTable.isValidLogRequest(User.email, User.password))
                 _validLoginRequest.value = CREDENTIALS_ACCEPTED else alertUserRequestFailed()
         }else { createNewUser() }
 
@@ -85,8 +84,8 @@ class LoginScreenViewModel(private val db: UserData) : ViewModel() {
     }
 
     private fun createNewUser() {
-        if(!doesUserExist(db) && doesPasswordsMatch() && User.email != ""){
-              db.createUser(User.email, User.password)
+        if(!doesUserExist() && doesPasswordsMatch() && User.email != ""){
+              Database.userTable.createUser(User.email, User.password)
              _validLoginRequest.value = CREDENTIALS_ACCEPTED
         }else{
             //creates an error message

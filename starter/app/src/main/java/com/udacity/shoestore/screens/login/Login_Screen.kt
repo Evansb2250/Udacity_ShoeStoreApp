@@ -9,9 +9,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
+
+
 import com.udacity.shoestore.databinding.LoginScreenFragmentBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -20,10 +23,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class Login_Screen : Fragment() {
 
-    private lateinit var viewModelFactory: LoginScreenViewModelFactory
+   // private lateinit var viewModelFactory: LoginScreenViewModelFactory
     private lateinit var binding: LoginScreenFragmentBinding
-    private lateinit var viewModel: LoginScreenViewModel
-
+    private val viewModel: LoginScreenViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,8 +35,9 @@ class Login_Screen : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.login__screen_fragment, container, false)
 
         //initializes the viewModel, factory obj & Binds with the binding object
-        setUpViewModel()
-
+   //     setUpViewModel()
+      binding.viewModel = viewModel
+      binding.setLifecycleOwner(this)
 
         //Displays errors
         viewModel.guiMessage.observe(viewLifecycleOwner, Observer { message ->
@@ -78,12 +81,12 @@ class Login_Screen : Fragment() {
     }
 
 
-    private fun setUpViewModel() {
-        viewModelFactory = LoginScreenViewModelFactory()
-        viewModel = ViewModelProvider(this, viewModelFactory).get(LoginScreenViewModel::class.java)
-        binding.viewModel = viewModel
-        binding.setLifecycleOwner(this)
-    }
+//    private fun setUpViewModel() {
+//        viewModelFactory = LoginScreenViewModelFactory(UserData())
+//        viewModel = ViewModelProvider(this, viewModelFactory).get(LoginScreenViewModel::class.java)
+//        binding.viewModel = viewModel
+//        binding.setLifecycleOwner(this)
+//    }
 
 
 
