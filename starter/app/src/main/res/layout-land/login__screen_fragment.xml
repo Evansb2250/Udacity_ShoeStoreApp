@@ -54,7 +54,8 @@
                     android:ems="10"
                     android:hint="@string/userNameHint"
                     android:inputType="textPersonName"
-                    android:text="@={user.Companion.email}" />
+                    android:text="@={user.Companion.email}"
+                    tools:ignore="Autofill" />
             </TableRow>
 
             <TableRow

@@ -68,7 +68,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             app:layout_constraintBottom_toTopOf="@+id/scrollView2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.431"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
@@ -78,13 +78,13 @@
             android:layout_width="414dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="29dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.18"
             app:layout_constraintStart_toEndOf="@+id/scrollView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView22"
-            app:layout_constraintVertical_bias="0.32999998">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -102,12 +102,14 @@
                 <EditText
                     android:id="@+id/shoeNameEditText"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/marginSize"
                     android:ems="10"
                     android:focusable="false"
                     android:inputType="textPersonName"
-                    android:text="@={viewModel.currentShoe.name}" />
+                    android:text="@={viewModel.currentShoe.name}"
+                    android:importantForAutofill="no"
+                    tools:ignore="LabelFor" />
             </TableRow>
 
             <TableRow
@@ -126,7 +128,7 @@
                 <EditText
                     android:id="@+id/companyNameEditText"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/marginSize"
                     android:ems="10"
                     android:focusable="false"
@@ -150,7 +152,7 @@
                 <EditText
                     android:id="@+id/shoeSizeNameEditText"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/marginSize"
                     android:ems="10"
                     android:focusable="false"
@@ -175,7 +177,7 @@
                 <EditText
                     android:id="@+id/descriptionEditText"
                     android:layout_width="168dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/marginSize"
                     android:ems="10"
                     android:focusable="false"

@@ -121,12 +121,13 @@
                     android:id="@+id/confirmPasswordEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/leftMargin"
+                    android:layout_marginStart="@dimen/leftMargin"
                     android:ems="10"
                     android:hint="@string/passwordEditHint"
                     android:inputType="textPassword"
                     android:text="@={user.Companion.passwordAuthentication}"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    tools:ignore="Autofill" />
             </TableRow>
 
         </TableLayout>
@@ -163,7 +164,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="72dp"
             android:onClick="@{()->viewModel.getUIDetails()}"
-            android:text="Create"
+            android:text="@string/create"
             android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/cancelButton" />

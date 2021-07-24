@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
         <variable
             name="instructions"
@@ -63,7 +64,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12"
             app:layout_constraintVertical_bias="0.895"
-            app:srcCompat="@drawable/ic_baseline_navigate_next_24" />
+            app:srcCompat="@drawable/ic_baseline_navigate_next_24"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/textView9"

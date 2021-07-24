@@ -19,7 +19,6 @@
         android:layout_height="match_parent"
         tools:context=".screens.forms.ShoeForm">
 
-        <!-- TODO: Update blank fragment layout -->
 
         <TableLayout
             android:id="@+id/tableLayout2"
@@ -43,13 +42,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/leftMargin"
-                    android:text="Shoe Name: " />
+                    android:text="@string/shoe_name" />
 
                 <EditText
                     android:id="@+id/shoeNameEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/marginSize"
+                    android:layout_marginStart="@dimen/marginSize"
                     android:background="@color/pearl_white"
                     android:ems="10"
                     android:inputType="textPersonName"
@@ -67,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/leftMargin"
-                    android:text="Company" />
+                    android:text="@string/company" />
 
                 <EditText
                     android:id="@+id/companyNameEditText"
@@ -90,14 +89,14 @@
                     style="@style/normalTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/leftMargin"
-                    android:text="Size" />
+                    android:layout_marginStart="@dimen/leftMargin"
+                    android:text="@string/size" />
 
                 <EditText
                     android:id="@+id/shoeSizeNameEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/marginSize"
+                    android:layout_marginStart="@dimen/marginSize"
                     android:background="@color/pearl_white"
                     android:ems="10"
                     android:inputType="numberDecimal"
@@ -114,14 +113,14 @@
                     style="@style/normalTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/leftMargin"
-                    android:text="Description" />
+                    android:layout_marginStart="@dimen/leftMargin"
+                    android:text="@string/description" />
 
                 <EditText
                     android:id="@+id/descriptionEditText"
                     android:layout_width="168dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/marginSize"
+                    android:layout_marginStart="@dimen/marginSize"
                     android:background="@color/pearl_white"
                     android:ems="10"
                     android:inputType="textPersonName"
@@ -138,7 +137,7 @@
             android:layout_marginBottom="10dp"
             android:background="#FFFFFF"
             android:gravity="center"
-            android:text="Enter Shoe Details"
+            android:text="@string/enter_shoe_details"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -152,7 +151,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             android:onClick="@{()->shoeViewModel.validateUserInput()}"
-            android:text="Submit"
+            android:text="@string/submit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tableLayout2"
             app:layout_constraintHorizontal_bias="0.496"

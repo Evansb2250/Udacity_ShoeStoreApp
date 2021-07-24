@@ -28,7 +28,8 @@
             app:layout_constraintHorizontal_bias="0.321"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-            app:layout_constraintVertical_bias="0.75" />
+            app:layout_constraintVertical_bias="0.75"
+            tools:ignore="ContentDescription" />
 
         <ScrollView
             android:id="@+id/scrollView2"
@@ -85,7 +86,8 @@
                 android:ems="10"
                 android:focusable="false"
                 android:inputType="textPersonName"
-                android:text="@{viewModel.currentShoe.name}" />
+                android:text="@{viewModel.currentShoe.name}"
+                tools:ignore="Autofill,LabelFor" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -142,7 +144,8 @@
                 android:ems="10"
                 android:focusable="false"
                 android:inputType="textPersonName"
-                android:text="@{viewModel.currentShoe.description}" />
+                android:text="@{viewModel.currentShoe.description}"
+                tools:ignore="Autofill,LabelFor" />
         </LinearLayout>
 
         <TextView
@@ -188,7 +191,8 @@
             app:backgroundTint="#A4925B"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/addShoeButton"
-            app:srcCompat="@drawable/ic_baseline_remove_24" />
+            app:srcCompat="@drawable/ic_baseline_remove_24"
+            tools:ignore="ContentDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
