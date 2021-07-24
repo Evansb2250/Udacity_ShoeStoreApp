@@ -43,7 +43,7 @@ class ShoeListingViewModel : ViewModel() {
                 break
             }
             //increments the index
-            index.inc()
+            index +=1
         }
     }
 
