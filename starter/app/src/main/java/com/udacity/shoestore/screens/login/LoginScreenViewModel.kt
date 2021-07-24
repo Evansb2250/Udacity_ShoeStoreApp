@@ -8,7 +8,7 @@ import com.udacity.shoestore.constants.LOGGING_IN
 import com.udacity.shoestore.constants.REGISTERING
 import com.udacity.shoestore.dataStorage.Database
 
-import com.udacity.shoestore.dataStorage.User
+import com.udacity.shoestore.globalVariables.LoginEditTextVar
 import com.udacity.shoestore.doesPasswordsMatch
 import com.udacity.shoestore.doesUserExist
 
@@ -54,9 +54,9 @@ class LoginScreenViewModel() : ViewModel() {
     fun restoreLoginState() {_loginState.value = LOGGING_IN }
 
 
-    fun startRegistration(){ updateStateToRegistration() ; User.clear() ; setClearEditTextToTrue() }
+    fun startRegistration(){ updateStateToRegistration() ; LoginEditTextVar.clear() ; setClearEditTextToTrue() }
 
-    fun cancelRegistration(){ restoreLoginState() ; User.clear() ; setClearEditTextToTrue() }
+    fun cancelRegistration(){ restoreLoginState() ; LoginEditTextVar.clear() ; setClearEditTextToTrue() }
 
 
     fun getUIDetails(){
@@ -66,12 +66,13 @@ class LoginScreenViewModel() : ViewModel() {
 
     fun checkingRequest(){
         if(loginState.value == LOGGING_IN){
-            if(Database.userTable.containsUser(User.email) && Database.userTable.isValidLogRequest(User.email, User.password))
+            if(Database.userTable.containsUser(LoginEditTextVar.email) && Database.userTable.isValidLogRequest(
+                    LoginEditTextVar.email, LoginEditTextVar.password))
                 _validLoginRequest.value = CREDENTIALS_ACCEPTED else alertUserRequestFailed()
         }else { createNewUser() }
 
         setClearEditTextToTrue()
-        User.clear()
+        LoginEditTextVar.clear()
     }
 
 
@@ -84,8 +85,8 @@ class LoginScreenViewModel() : ViewModel() {
     }
 
     private fun createNewUser() {
-        if(!doesUserExist() && doesPasswordsMatch() && User.email != ""){
-              Database.userTable.createUser(User.email, User.password)
+        if(!doesUserExist() && doesPasswordsMatch() && LoginEditTextVar.email != ""){
+              Database.userTable.createUser(LoginEditTextVar.email, LoginEditTextVar.password)
              _validLoginRequest.value = CREDENTIALS_ACCEPTED
         }else{
             //creates an error message

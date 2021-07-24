@@ -29,7 +29,6 @@ class InstructionScreen : Fragment() {
 
 
         binding.button.setOnClickListener{ navigateToShoeList() }
-
         return binding.root
     }
 

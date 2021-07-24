@@ -1,6 +1,6 @@
 package com.udacity.shoestore.globalVariables
 
-class EditTextVar {
+class AddShoeEditTextVar {
 
     companion object {
         var shoeName = ""

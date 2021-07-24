@@ -1,14 +1,13 @@
 package com.udacity.shoestore
 
 import android.app.Application
-import android.graphics.Color
 import android.os.Build
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat
 import com.udacity.shoestore.dataStorage.Database
-import com.udacity.shoestore.dataStorage.User
+import com.udacity.shoestore.globalVariables.LoginEditTextVar
 import com.udacity.shoestore.models.Shoe
 
 class Util {
@@ -51,8 +50,8 @@ class Util {
 
 
 
- fun doesPasswordsMatch(): Boolean = User.password.equals(User.passwordAuthentication)
- fun doesUserExist() :Boolean =  Database.userTable.containsUser(User.email)
+ fun doesPasswordsMatch(): Boolean = LoginEditTextVar.password.equals(LoginEditTextVar.passwordAuthentication)
+ fun doesUserExist() :Boolean =  Database.userTable.containsUser(LoginEditTextVar.email)
 
 
 

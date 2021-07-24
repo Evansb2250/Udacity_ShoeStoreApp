@@ -1,7 +1,7 @@
 package com.udacity.shoestore.screens.forms
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.udacity.shoestore.globalVariables.EditTextVar
+import com.udacity.shoestore.globalVariables.AddShoeEditTextVar
 import com.udacity.shoestore.screens.shoeListing.ShoeListingViewModel
 import org.junit.Assert.*
 import org.junit.Test
@@ -168,7 +168,7 @@ class ShoeFormViewModelTest {
 
     //Resets static variables
     private fun resetVariables(){
-        EditTextVar.clear()
+        AddShoeEditTextVar.clear()
         ShoeFormViewModel.resetBarCode()
     }
 
@@ -176,9 +176,9 @@ class ShoeFormViewModelTest {
     //Function to added data to the global variables used for 2-way databinding
     //This information is used to create a new shoe.
     private fun createShoe(name: String, company: String, size: String, desc: String) {
-        EditTextVar.shoeName = name
-        EditTextVar.companyName = company
-        EditTextVar.shoeDiscription = desc
-        EditTextVar.shoeSizeString = size
+        AddShoeEditTextVar.shoeName = name
+        AddShoeEditTextVar.companyName = company
+        AddShoeEditTextVar.shoeDiscription = desc
+        AddShoeEditTextVar.shoeSizeString = size
     }
 }

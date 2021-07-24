@@ -11,7 +11,7 @@
 
         <variable
             name="data"
-            type="com.udacity.shoestore.globalVariables.EditTextVar" />
+            type="com.udacity.shoestore.globalVariables.AddShoeEditTextVar" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

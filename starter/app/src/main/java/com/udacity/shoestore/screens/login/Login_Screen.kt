@@ -74,20 +74,8 @@ class Login_Screen : Fragment() {
             }
         })
 
-
-
-
         return binding.root
     }
-
-
-//    private fun setUpViewModel() {
-//        viewModelFactory = LoginScreenViewModelFactory(UserData())
-//        viewModel = ViewModelProvider(this, viewModelFactory).get(LoginScreenViewModel::class.java)
-//        binding.viewModel = viewModel
-//        binding.setLifecycleOwner(this)
-//    }
-
 
 
     private fun clearEditTexts(){

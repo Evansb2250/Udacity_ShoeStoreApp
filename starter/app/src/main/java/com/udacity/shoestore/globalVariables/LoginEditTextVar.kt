@@ -1,6 +1,6 @@
-package com.udacity.shoestore.dataStorage
+package com.udacity.shoestore.globalVariables
 
-class User {
+class LoginEditTextVar {
     companion object{
         var email: String = ""
         var password: String = ""

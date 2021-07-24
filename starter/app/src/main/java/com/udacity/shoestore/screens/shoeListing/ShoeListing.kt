@@ -35,7 +35,7 @@ import timber.log.Timber
 class ShoeListing : Fragment() {
 
     //Creates a shared ViewModel
-    private val viewModel: ShoeListingViewModel by activityViewModels()
+    private val viewModel:ShoeListingViewModel by activityViewModels()
     private lateinit var binding: FragmentShoeListingBinding
 
     @RequiresApi(Build.VERSION_CODES.M)

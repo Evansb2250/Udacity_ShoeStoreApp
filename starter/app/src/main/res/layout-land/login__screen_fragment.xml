@@ -13,7 +13,7 @@
 
         <variable
             name="user"
-            type="com.udacity.shoestore.dataStorage.User" />
+            type="com.udacity.shoestore.globalVariables.LoginEditTextVar" />
     </data>
 
 
