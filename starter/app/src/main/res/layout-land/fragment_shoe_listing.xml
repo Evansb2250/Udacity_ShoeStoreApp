@@ -62,7 +62,8 @@
             style="@style/headingStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="68dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:fontFamily="sans-serif-medium"
             android:text="@string/invetory"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
@@ -71,7 +72,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.813" />
 
         <TableLayout
             android:id="@+id/tableLayout2"
@@ -121,7 +122,7 @@
                     android:id="@+id/textView8"
                     style="@style/normalTextStyle"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="@string/company"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -145,7 +146,7 @@
                     android:id="@+id/textView10"
                     style="@style/normalTextStyle"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="@string/size"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -170,7 +171,7 @@
                     android:id="@+id/textView11"
                     style="@style/normalTextStyle"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="@string/description"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 

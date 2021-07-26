@@ -3,6 +3,7 @@ package com.udacity.shoestore.screens.shoeListing
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.udacity.shoestore.models.Shoe
 import timber.log.Timber
 
@@ -18,7 +19,8 @@ class ShoeListingViewModel : ViewModel() {
 
     // wraps the mutable and Live data with the ArrayList to update the structures on changes
     // to the list
-    private val shoeList = ArrayList<Shoe>()
+    private val shoeList =  ArrayList<Shoe>()
+
 
     //Mutable Live data to that
     private val _shoeListLiveData = MutableLiveData<List<Shoe>>()

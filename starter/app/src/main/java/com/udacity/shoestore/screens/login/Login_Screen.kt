@@ -23,21 +23,28 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class Login_Screen : Fragment() {
 
-   // private lateinit var viewModelFactory: LoginScreenViewModelFactory
+    // private lateinit var viewModelFactory: LoginScreenViewModelFactory
     private lateinit var binding: LoginScreenFragmentBinding
-    private val viewModel: LoginScreenViewModel by activityViewModels()
+    private lateinit var viewModel: LoginScreenViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
+        //Instantiate the data binding object
         binding = DataBindingUtil.inflate(inflater, R.layout.login__screen_fragment, container, false)
 
+        //
+        val factoryObj = LoginScreenViewModelFactory()
+
         //initializes the viewModel, factory obj & Binds with the binding object
-   //     setUpViewModel()
-      binding.viewModel = viewModel
-      binding.setLifecycleOwner(this)
+        viewModel = ViewModelProvider(this, factoryObj).get(LoginScreenViewModel::class.java)
+        //setUpViewModel()
+        binding.viewModel = viewModel
+
+        //sets lifecycle to the binding object to the fragment
+        binding.setLifecycleOwner(this)
 
         //Displays errors
         viewModel.guiMessage.observe(viewLifecycleOwner, Observer { message ->
@@ -50,17 +57,16 @@ class Login_Screen : Fragment() {
             if (inLoginState) {
                 changeLoginCreateButtonsVisibility(View.VISIBLE)
                 createSubscriptionViews(View.INVISIBLE)
-            }
-            else {
+            } else {
                 changeLoginCreateButtonsVisibility(View.INVISIBLE)
                 createSubscriptionViews(View.VISIBLE)
             }
 
         })
 
-
+        //clears the inputs in the edit text
         viewModel.clearEditText.observe(viewLifecycleOwner, Observer { clearNow ->
-            if(clearNow){
+            if (clearNow) {
                 clearEditTexts()
                 viewModel.setClearEditToFalse()
             }
@@ -68,7 +74,7 @@ class Login_Screen : Fragment() {
 
         //responds when a valid user name and password is entered
         viewModel.validLoginRequest.observe(viewLifecycleOwner, Observer { requestResponse ->
-            if(requestResponse) {
+            if (requestResponse) {
                 logUserIn()
                 viewModel.resetLoginState()
             }
@@ -77,21 +83,19 @@ class Login_Screen : Fragment() {
         return binding.root
     }
 
-
-    private fun clearEditTexts(){
-            binding.userNameEdit.setText("")
-            binding.passwordEdit.setText("")
-            binding.confirmPasswordEdit.setText("")
+    private fun clearEditTexts() {
+        binding.userNameEdit.setText("")
+        binding.passwordEdit.setText("")
+        binding.confirmPasswordEdit.setText("")
     }
 
-
-
-
+    //sets visibilty to true or false
     private fun changeLoginCreateButtonsVisibility(visibility: Int) {
         binding.signUpButton?.visibility = visibility
         binding.loginButton?.visibility = visibility
     }
 
+    //sets visibilty to true or false
     private fun createSubscriptionViews(visibility: Int) {
         binding.confirmPasswordEdit?.visibility = visibility
         binding.confirmPasswordText?.visibility = visibility
@@ -99,8 +103,10 @@ class Login_Screen : Fragment() {
         binding.createButton?.visibility = visibility
     }
 
-    private fun logUserIn(){
+    private fun logUserIn() {
+        //Navigates to the wellcome page
         findNavController().navigate(Login_ScreenDirections.actionLoginScreenToWelcomeScreen())
+       // resets the state of the Login variable to false
         viewModel.restoreLoginState()
     }
 

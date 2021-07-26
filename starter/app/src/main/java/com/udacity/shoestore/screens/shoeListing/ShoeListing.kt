@@ -6,10 +6,12 @@ import android.os.Bundle
 import android.view.*
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -34,6 +36,7 @@ import timber.log.Timber
  */
 class ShoeListing : Fragment() {
 
+
     //Creates a shared ViewModel
     private val viewModel:ShoeListingViewModel by activityViewModels()
     private lateinit var binding: FragmentShoeListingBinding
@@ -51,17 +54,19 @@ class ShoeListing : Fragment() {
         binding.viewModel = viewModel
         binding.setLifecycleOwner(this)
 
-
+        //Updates the linearLayout when an item is added or removed from the list
         viewModel.shoeListLiveData.observe(viewLifecycleOwner, Observer { listOfShoes ->
+         //calls util function to create and style a textview based on the names of the shoe
             val listOfTextViews = Util.createTextViewList(
                 listOfShoes.toList(),
                 requireActivity().application,
                 ArrayList()
             )
 
-            //Clear list text Views
+            //Clear previous text Views from the linearLayout
             binding.linearLayout.removeAllViews()
 
+            //adds each textview to the linear layout
             listOfTextViews.forEach { textView ->
                 createOnClickTV(textView); binding.linearLayout.addView(
                 textView
@@ -69,15 +74,22 @@ class ShoeListing : Fragment() {
             }
         })
 
+
+
+        // removes a selected Text View from the linear Layout
         binding.removeButton?.setOnClickListener { viewModel.deleteItem() }
 
         setUpFloatingActionButtons()
+
+        //indicates that the fragment will have an option menu
         setHasOptionsMenu(true)
         return binding.root
     }
 
 
+
     private fun setUpFloatingActionButtons() {
+        // navigates to the fragment responsible for adding shoes
         binding.addShoeButton.setOnClickListener {
             findNavController().navigate(ShoeListingDirections.actionShoeListingToShoeForm())
         }
@@ -86,6 +98,7 @@ class ShoeListing : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         //    super.onCreateOptionsMenu(menu, inflater)
+        // adds the R.menu.menu to the fragment
         inflater.inflate(R.menu.menu, menu)
     }
 
@@ -93,6 +106,7 @@ class ShoeListing : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.logOutId -> {
+                // if the logout option was selected the user will navigate to the Login Option
                 navigateToLogin()
                 true
             }
@@ -102,7 +116,9 @@ class ShoeListing : Fragment() {
 
 
     private fun createOnClickTV(textView: TextView) {
+        //TextView listener
         textView.setOnClickListener {
+            //When a textView is selected the tag of that textView is passed to the viewModel to display its contents.
             viewModel.displayItem(it.tag.toString().toInt())
         }
     }

@@ -1,6 +1,10 @@
 package com.udacity.shoestore.screens.forms
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.udacity.shoestore.constants.COMPANY
+import com.udacity.shoestore.constants.DESC
+import com.udacity.shoestore.constants.NAME
+import com.udacity.shoestore.constants.SIZE
 import com.udacity.shoestore.globalVariables.AddShoeEditTextVar
 import com.udacity.shoestore.screens.shoeListing.ShoeListingViewModel
 import org.junit.Assert.*
@@ -10,11 +14,6 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class ShoeFormViewModelTest {
-    private val NAME = 0
-    private val COMPANY = 1
-    private val SIZE = 2
-    private val DESC = 3
-
 
     @Test
     fun testGetShoe_notNull_newShoe() {

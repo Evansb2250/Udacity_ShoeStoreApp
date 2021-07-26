@@ -33,7 +33,7 @@ class Welcome_Screen : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_welcome__screen, container, false)
 
-
+        // navigates to the instruction screen
         binding.imageButton.setOnClickListener{
         findNavController().navigate(Welcome_ScreenDirections.actionWelcomeScreenToInstructionScreen2())
         }

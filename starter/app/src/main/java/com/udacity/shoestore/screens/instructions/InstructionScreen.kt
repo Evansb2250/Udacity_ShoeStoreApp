@@ -15,6 +15,7 @@ import com.udacity.shoestore.databinding.FragmentInstructionScreenBinding
 
 
 
+
 class InstructionScreen : Fragment() {
 
     private lateinit var binding: FragmentInstructionScreenBinding
@@ -27,12 +28,14 @@ class InstructionScreen : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_instruction__screen, container, false)
 
-
+        // button listener to navigate to the shoeListing Fragment
         binding.button.setOnClickListener{ navigateToShoeList() }
+
         return binding.root
     }
 
     private fun navigateToShoeList() {
+        // navigates to the ShoeListing Fragment.
         findNavController().navigate(InstructionScreenDirections.actionInstructionScreen2ToShoeListing())
     }
 

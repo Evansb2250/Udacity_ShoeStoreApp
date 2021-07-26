@@ -48,43 +48,53 @@ class LoginScreenViewModel() : ViewModel() {
     }
 
 
-
+    //Makes it so that a user can register a new user by making the invicible textViews visible.
     fun updateStateToRegistration(){ _loginState.value = REGISTERING }
 
+    //Makes it where a user can only login
     fun restoreLoginState() {_loginState.value = LOGGING_IN }
 
-
+    // Clears LoginEditTextVar and it also clears the global values
     fun startRegistration(){ updateStateToRegistration() ; LoginEditTextVar.clear() ; setClearEditTextToTrue() }
 
+    //Removes data entered in Edit Text and returns back to the login State
     fun cancelRegistration(){ restoreLoginState() ; LoginEditTextVar.clear() ; setClearEditTextToTrue() }
 
-
+    //function that is activated when a user attempts to add a new user or log in
     fun getUIDetails(){
         //Checks to see if the user needs to be added or logged in
-        checkingRequest()
+        loginORCreateRequest()
     }
 
-    fun checkingRequest(){
+
+    fun loginORCreateRequest(){
+        //if user is attempting to login the information information from the 2-way data binding variables
+        // is collected and the checked to see if it exist in a HashMap using the Singleton Pattern.
         if(loginState.value == LOGGING_IN){
             if(Database.userTable.containsUser(LoginEditTextVar.email) && Database.userTable.isValidLogRequest(
                     LoginEditTextVar.email, LoginEditTextVar.password))
                 _validLoginRequest.value = CREDENTIALS_ACCEPTED else alertUserRequestFailed()
-        }else { createNewUser() }
-
+        }else {
+            //attempts to create a new user login
+            createNewUserRequest() }
+        //clears values in 2-way data Binding variables and edit Text
         setClearEditTextToTrue()
         LoginEditTextVar.clear()
     }
 
-
+        //flags to GUI when to erase entries entered in the edit text
     fun setClearEditTextToTrue(){
         _clearEditText.value = true
     }
 
+    //flags to GUI when the user fails to login or create a new account
     private fun alertUserRequestFailed() {
         _guiMessage.value = if(loginState.value == LOGGING_IN) "could not log in!!" else "couldn't create user"
     }
 
-    private fun createNewUser() {
+    //checks to see if the passwords exist and that the user name does not already exist before
+    //adding the new user to the hashMap.
+    private fun createNewUserRequest() {
         if(!doesUserExist() && doesPasswordsMatch() && LoginEditTextVar.email != ""){
               Database.userTable.createUser(LoginEditTextVar.email, LoginEditTextVar.password)
              _validLoginRequest.value = CREDENTIALS_ACCEPTED
@@ -96,12 +106,15 @@ class LoginScreenViewModel() : ViewModel() {
 
     }
 
+    //resets the _validLoginRequest to false since credentials were not met
     fun resetLoginState() { _validLoginRequest.value = !CREDENTIALS_ACCEPTED }
+
 
     fun setClearEditToFalse() { _clearEditText.value = false }
 
 
     init {
+        //starts the GUI in the Login state meaning only email and password edit text are shown.
         _loginState.value = LOGGING_IN
          setClearEditToFalse()
     }

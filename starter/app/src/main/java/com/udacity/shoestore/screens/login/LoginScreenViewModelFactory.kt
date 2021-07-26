@@ -6,7 +6,7 @@ import com.udacity.shoestore.dataStorage.Database
 
 import java.lang.IllegalArgumentException
 
-class LoginScreenViewModelFactory(val db: Database): ViewModelProvider.Factory {
+class LoginScreenViewModelFactory: ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(LoginScreenViewModel::class.java)){
             //Checks to see if an instance of LoginScreenViewModel has been created

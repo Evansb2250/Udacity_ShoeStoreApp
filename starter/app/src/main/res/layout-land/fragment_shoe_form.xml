@@ -12,14 +12,14 @@
             type="com.udacity.shoestore.globalVariables.AddShoeEditTextVar" />
     </data>
 
-
+<!--  I used the constraint layout so I could easily position views-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@color/appBackgroundColour"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".screens.forms.ShoeForm">
 
-
+<!-- The tablelayout made it more convenient for formatting and aligning the text and edit view-->
         <TableLayout
             android:id="@+id/tableLayout2"
             android:layout_width="wrap_content"
@@ -40,14 +40,14 @@
                     android:id="@+id/textView5"
                     style="@style/normalTextStyle"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/leftMargin"
                     android:text="@string/shoe_name" />
 
                 <EditText
                     android:id="@+id/shoeNameEditText"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/marginSize"
                     android:background="@color/pearl_white"
                     android:ems="10"
@@ -64,14 +64,14 @@
                     android:id="@+id/textView8"
                     style="@style/normalTextStyle"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/leftMargin"
                     android:text="@string/company" />
 
                 <EditText
                     android:id="@+id/companyNameEditText"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/marginSize"
                     android:background="@color/pearl_white"
                     android:ems="10"
@@ -95,7 +95,7 @@
                 <EditText
                     android:id="@+id/shoeSizeNameEditText"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/marginSize"
                     android:background="@color/pearl_white"
                     android:ems="10"

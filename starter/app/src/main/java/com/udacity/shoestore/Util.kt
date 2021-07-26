@@ -14,7 +14,7 @@ class Util {
     companion object{
 
 
-        @RequiresApi(Build.VERSION_CODES.M)
+        // takes a list of shoe instances creates a list of txtView Instances and returns it
         fun createTextViewList(shoes: List<Shoe>, application: Application, newList: ArrayList<TextView>): ArrayList<TextView>{
             for(item in shoes){
                 newList.add(addDataToTextView(TextView(application),item,application))
@@ -25,7 +25,7 @@ class Util {
 
 
 
-
+        // customizes the textView using the Shoe instance
         private fun addDataToTextView(textView: TextView, shoe:Shoe,  application: Application) : TextView {
             textView.tag = shoe.uniqueId
             textView.setText(shoe.name)
@@ -36,7 +36,7 @@ class Util {
             return textView
         }
 
-
+        // sets Text Content to Wrap_content
         private fun createParameters(): ViewGroup.LayoutParams {
             return ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -49,8 +49,9 @@ class Util {
 }
 
 
-
+// Checks to see if the password matches
  fun doesPasswordsMatch(): Boolean = LoginEditTextVar.password.equals(LoginEditTextVar.passwordAuthentication)
+//Checks to see if the user already exist before adding to the hashMap
  fun doesUserExist() :Boolean =  Database.userTable.containsUser(LoginEditTextVar.email)
 
 
