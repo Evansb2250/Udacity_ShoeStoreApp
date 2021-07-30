@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".screens.Welcome_Screen">
 
+<!--    I used a constraint layout because I wanted to position views freely-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/welcome_Screen_layout"
         android:layout_width="match_parent"

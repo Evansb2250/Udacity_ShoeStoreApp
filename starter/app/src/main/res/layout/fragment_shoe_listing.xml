@@ -9,6 +9,7 @@
             type="com.udacity.shoestore.screens.shoeListing.ShoeListingViewModel" />
     </data>
 
+<!--    Constraint layout made it easy to resposition views-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@color/appBackgroundColour"
         android:layout_width="match_parent"
@@ -58,6 +59,7 @@
             </LinearLayout>
         </ScrollView>
 
+<!--        I used a linearLayout to fit more views on a smaller screen-->
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="225dp"

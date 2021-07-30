@@ -14,7 +14,7 @@
             type="com.udacity.shoestore.globalVariables.LoginEditTextVar" />
     </data>
 
-
+    <!--     constraint layout made it easier to position the views on the screen how I wanted it -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/login_layout"
         android:layout_width="match_parent"
@@ -49,6 +49,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
 
+<!--        I could have aligned the views using the top edges, but I wanted to use a table layout so I can make sure the -->
+<!--        spacing was equivalent to other views.-->
         <TableLayout
             android:id="@+id/tableLayout3"
             android:layout_width="wrap_content"
@@ -75,7 +77,7 @@
                     android:id="@+id/userNameEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/leftMargin"
+                    android:layout_marginStart="@dimen/leftMargin"
                     android:ems="10"
                     android:hint="@string/userNameHint"
                     android:inputType="textPersonName"
@@ -98,7 +100,7 @@
                     android:id="@+id/passwordEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/leftMargin"
+                    android:layout_marginStart="@dimen/leftMargin"
                     android:ems="10"
                     android:hint="@string/passwordEditHint"
                     android:inputType="textPassword"

@@ -9,12 +9,39 @@
             type="com.udacity.shoestore.screens.instructions.InstructionScreen" />
     </data>
 
+<!-- I used the Constraint layout to make it easier to position the views freely -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/instruction_Screen2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/appBackgroundColour"
         tools:context=".screens.instructions.InstructionScreen">
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/removeButton2"
+            android:layout_width="81dp"
+            android:layout_height="69dp"
+            android:layout_marginTop="12dp"
+            app:backgroundTint="#959FB3CA"
+            app:layout_constraintBottom_toTopOf="@+id/textView15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView14"
+            app:srcCompat="@drawable/ic_baseline_remove_24"
+            tools:ignore="ContentDescription" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addShoeButton2"
+            android:layout_width="67dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_add"
+            app:backgroundTint="#A6C588"
+            app:layout_constraintBottom_toTopOf="@+id/textView14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/textView15"
@@ -60,10 +87,10 @@
             android:backgroundTint="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.87"
+            app:layout_constraintHorizontal_bias="0.953"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12"
-            app:layout_constraintVertical_bias="0.895"
+            app:layout_constraintVertical_bias="0.885"
             app:srcCompat="@drawable/ic_baseline_navigate_next_24"
             tools:ignore="ContentDescription" />
 

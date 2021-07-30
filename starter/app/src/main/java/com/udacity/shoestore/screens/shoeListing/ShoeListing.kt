@@ -29,11 +29,7 @@ import timber.log.Timber
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ShoeListing.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class ShoeListing : Fragment() {
 
 
@@ -48,8 +44,7 @@ class ShoeListing : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_listing, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_listing, container, false)
 
         binding.viewModel = viewModel
         binding.setLifecycleOwner(this)
@@ -77,7 +72,7 @@ class ShoeListing : Fragment() {
 
 
         // removes a selected Text View from the linear Layout
-        binding.removeButton?.setOnClickListener { viewModel.deleteItem() }
+        binding.removeButton.setOnClickListener { viewModel.deleteItem() }
 
         setUpFloatingActionButtons()
 
@@ -124,7 +119,7 @@ class ShoeListing : Fragment() {
     }
 
     private fun navigateToLogin() {
-        findNavController().navigate(ShoeListingDirections.actionShoeListingToLoginScreen())
+        findNavController().popBackStack(R.id.login_Screen,false)
     }
 }
 

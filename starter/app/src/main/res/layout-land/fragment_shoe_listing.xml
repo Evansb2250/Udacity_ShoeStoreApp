@@ -9,6 +9,8 @@
             type="com.udacity.shoestore.screens.shoeListing.ShoeListingViewModel" />
     </data>
 
+    <!--    Constraint layout made it easy to resposition views-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
@@ -18,9 +20,9 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addShoeButton"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="84dp"
+            android:layout_width="67dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="60dp"
             android:layout_marginBottom="56dp"
             android:src="@drawable/ic_add"
             app:backgroundTint="#A6C588"
@@ -29,22 +31,23 @@
             app:layout_constraintTop_toBottomOf="@+id/scrollView2"
             tools:ignore="ContentDescription" />
 
+
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="224dp"
             android:layout_height="81dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="20dp"
             android:animateLayoutChanges="true"
             android:background="#F1E6E6"
             android:fadingEdge="horizontal|vertical"
             android:soundEffectsEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.036"
+            app:layout_constraintHorizontal_bias="0.047"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tableLayout2">
-
+            <!--        I used a linearLayout to fit more views on a smaller screen-->
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
@@ -55,7 +58,6 @@
 
             </LinearLayout>
         </ScrollView>
-
 
         <TextView
             android:id="@+id/textView7"
@@ -74,6 +76,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.813" />
 
+<!--        I was able to use a tableLayout for portait mode since I had more space on the screen-->
         <TableLayout
             android:id="@+id/tableLayout2"
             android:layout_width="414dp"
@@ -190,9 +193,9 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/removeButton"
-            android:layout_width="63dp"
-            android:layout_height="55dp"
-            android:layout_marginEnd="520dp"
+            android:layout_width="81dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="504dp"
             app:backgroundTint="#959FB3CA"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/addShoeButton"

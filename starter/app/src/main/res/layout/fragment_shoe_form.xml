@@ -14,6 +14,7 @@
             type="com.udacity.shoestore.globalVariables.AddShoeEditTextVar" />
     </data>
 
+<!--             I used a ConstraintLayout since it made easy to arrange the views -->
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
@@ -21,7 +22,7 @@
         android:background="@color/appBackgroundColour"
         tools:context=".screens.forms.ShoeForm">
 
-        <!-- TODO: Update blank fragment layout -->
+<!--      A tableLayout made it easier to line up the views and move them around on the screen if some of the views floated of the screens-->
         <TableLayout
             android:id="@+id/tableLayout2"
             android:layout_width="match_parent"

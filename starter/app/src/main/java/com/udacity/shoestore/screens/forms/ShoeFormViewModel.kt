@@ -25,10 +25,8 @@ class ShoeFormViewModel : ViewModel() {
 
     //Live data Value that is wrapped by _isFormRequirementsMet
     //lets users see the value without being able to change it.
-    var isformRequirementsMet: LiveData<Boolean> = _isFormRequirementsMet
-        set(value) {
-            field = _isFormRequirementsMet
-        }
+    val isformRequirementsMet: LiveData<Boolean> get()= _isFormRequirementsMet
+
 
 
     init {
@@ -67,7 +65,7 @@ class ShoeFormViewModel : ViewModel() {
     // checkst too see if all the requirements are met and returns the boolean value
     fun validateUserInput(): Boolean {
         _isFormRequirementsMet.value =
-            AddShoeEditTextVar.shoeName != "" || AddShoeEditTextVar.companyName != "" || AddShoeEditTextVar.shoeSizeString != ""
+            !AddShoeEditTextVar.shoeName.equals("") && !AddShoeEditTextVar.companyName.equals("") && !AddShoeEditTextVar.shoeSizeString.trim().equals("")
         return _isFormRequirementsMet.value!!
     }
 

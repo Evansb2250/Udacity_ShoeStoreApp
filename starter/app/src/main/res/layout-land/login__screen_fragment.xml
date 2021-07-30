@@ -16,7 +16,7 @@
             type="com.udacity.shoestore.globalVariables.LoginEditTextVar" />
     </data>
 
-
+    <!--     constraint layout made it easier to position the views on the screen how I wanted it -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/login_layout"
         android:layout_width="match_parent"
@@ -25,6 +25,8 @@
         android:background="@color/appBackgroundColour">
 
 
+        <!--        I could have aligned the views using the top edges, but I wanted to use a table layout so I can make sure the -->
+        <!--        spacing was equivalent to other views.-->
         <TableLayout
             android:id="@+id/tableLayout"
             android:layout_width="wrap_content"

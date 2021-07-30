@@ -16,14 +16,15 @@ import com.udacity.shoestore.globalVariables.AddShoeEditTextVar
 import com.udacity.shoestore.screens.shoeListing.ShoeListingViewModel
 
 
-
 class ShoeForm : Fragment() {
 
     //Databinding object used to connect xml views without using searchBy
     private lateinit var binding: FragmentShoeFormBinding
+
     //contains the logic for getting information from the GUI
     // and validating if the form is completed.
     private lateinit var viewModel: ShoeFormViewModel
+
     //used to gain access to the addShoeToList method in the ShoeList viewModel
     private val sharedViewModel: ShoeListingViewModel by activityViewModels()
 
@@ -67,8 +68,10 @@ class ShoeForm : Fragment() {
     private fun addShoeToNavigationArg() {
         // gets a instance of shoe
         val shoeObj = viewModel.getShoe()
+
+
         //Checks to see if it is null
-        if (shoeObj != null) {
+        shoeObj?.let {
             //adds the instance to the shoelist using the shared viewModel
             sharedViewModel.addToInventory(shoeObj)
             //increments the barCode variable to prevent future shoe instances from haveing
@@ -79,6 +82,7 @@ class ShoeForm : Fragment() {
             // Navigates back to the shoeList fragment.
             findNavController().navigate(ShoeFormDirections.actionShoeFormToShoeListing())
         }
+
     }
 }
 
