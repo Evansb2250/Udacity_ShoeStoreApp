@@ -159,7 +159,7 @@
             android:ellipsize="middle"
             android:fontFamily="@font/belleza"
             android:gravity="center"
-            android:rotationX="-21"
+            android:rotationX="0"
             android:text="@string/invetory"
             android:textAppearance="@style/TextAppearance.AppCompat.Display3"
             android:textColor="#000000"
