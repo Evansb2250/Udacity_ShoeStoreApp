@@ -8,4 +8,6 @@ const val NAME = 0
 const val COMPANY = 1
 const val SIZE = 2
 const val DESC = 3
+const val LOGIN_FAILED =  "could not log in!!"
+const val SIGNUP_FAIL = "couldn't create user"
 

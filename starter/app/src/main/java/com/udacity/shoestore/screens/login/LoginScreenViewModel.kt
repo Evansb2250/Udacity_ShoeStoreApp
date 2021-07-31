@@ -3,14 +3,11 @@ package com.udacity.shoestore.screens.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.udacity.shoestore.constants.CREDENTIALS_ACCEPTED
-import com.udacity.shoestore.constants.LOGGING_IN
-import com.udacity.shoestore.constants.REGISTERING
+import com.udacity.shoestore.constants.*
 import com.udacity.shoestore.dataStorage.Database
 
 import com.udacity.shoestore.globalVariables.LoginEditTextVar
-import com.udacity.shoestore.doesPasswordsMatch
-import com.udacity.shoestore.doesUserExist
+
 
 
 class LoginScreenViewModel() : ViewModel() {
@@ -25,8 +22,8 @@ class LoginScreenViewModel() : ViewModel() {
 
 
     //Message To User
-    private var _guiMessage= MutableLiveData<String>()
-    var guiMessage:LiveData<String> = _guiMessage
+    private var _guiMessage= MutableLiveData<String?>()
+    var guiMessage:LiveData<String?> = _guiMessage
         set(value) {
             field = _guiMessage
         }
@@ -48,7 +45,7 @@ class LoginScreenViewModel() : ViewModel() {
     }
 
 
-    //Makes it so that a user can register a new user by making the invicible textViews visible.
+    //Makes it so that a user can register a new user by making the invicible textViews visible for adding confirmation password.
     fun updateStateToRegistration(){ _loginState.value = REGISTERING }
 
     //Makes it where a user can only login
@@ -82,6 +79,11 @@ class LoginScreenViewModel() : ViewModel() {
         LoginEditTextVar.clear()
     }
 
+
+    fun guiMessageSent(){
+        _guiMessage.value = null
+    }
+
         //flags to GUI when to erase entries entered in the edit text
     fun setClearEditTextToTrue(){
         _clearEditText.value = true
@@ -89,7 +91,7 @@ class LoginScreenViewModel() : ViewModel() {
 
     //flags to GUI when the user fails to login or create a new account
     private fun alertUserRequestFailed() {
-        _guiMessage.value = if(loginState.value == LOGGING_IN) "could not log in!!" else "couldn't create user"
+        _guiMessage.value = if(loginState.value == LOGGING_IN) LOGIN_FAILED else SIGNUP_FAIL
     }
 
     //checks to see if the passwords exist and that the user name does not already exist before
@@ -106,6 +108,17 @@ class LoginScreenViewModel() : ViewModel() {
 
     }
 
+
+    // Checks to see if the password matches
+    fun doesPasswordsMatch(): Boolean =
+        LoginEditTextVar.password.equals(LoginEditTextVar.passwordAuthentication) && !LoginEditTextVar.password
+            .trim().equals("")
+
+    //Checks to see if the user already exist before adding to the hashMap
+    fun doesUserExist(): Boolean = Database.userTable.containsUser(LoginEditTextVar.email)
+
+
+
     //resets the _validLoginRequest to false since credentials were not met
     fun resetLoginState() { _validLoginRequest.value = !CREDENTIALS_ACCEPTED }
 
@@ -116,6 +129,7 @@ class LoginScreenViewModel() : ViewModel() {
     init {
         //starts the GUI in the Login state meaning only email and password edit text are shown.
         _loginState.value = LOGGING_IN
+        _guiMessage.value = null
          setClearEditToFalse()
     }
 

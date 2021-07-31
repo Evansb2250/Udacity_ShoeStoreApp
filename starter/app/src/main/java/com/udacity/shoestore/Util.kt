@@ -7,8 +7,10 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat
 import com.udacity.shoestore.dataStorage.Database
+import com.udacity.shoestore.globalVariables.AddShoeEditTextVar
 import com.udacity.shoestore.globalVariables.LoginEditTextVar
 import com.udacity.shoestore.models.Shoe
+import com.udacity.shoestore.screens.forms.ShoeFormViewModel
 
 class Util {
     companion object {
@@ -54,13 +56,6 @@ class Util {
 }
 
 
-// Checks to see if the password matches
-fun doesPasswordsMatch(): Boolean =
-    LoginEditTextVar.password.equals(LoginEditTextVar.passwordAuthentication) && !LoginEditTextVar.password
-        .trim().equals("")
-
-//Checks to see if the user already exist before adding to the hashMap
-fun doesUserExist(): Boolean = Database.userTable.containsUser(LoginEditTextVar.email)
 
 
 

@@ -48,7 +48,12 @@ class Login_Screen : Fragment() {
 
         //Displays errors
         viewModel.guiMessage.observe(viewLifecycleOwner, Observer { message ->
-            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+            message?.let {
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                //reset error message
+                viewModel.guiMessageSent()
+            }
+
         })
 
 
