@@ -29,7 +29,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="88804b04-05b7-4da4-9471-b75027ba8b34" name="Default Changelist" comment="" />
+    <list default="true" id="88804b04-05b7-4da4-9471-b75027ba8b34" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_7_17_2021_11_30_AM_[Default_Changelist]1/shelved.patch" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,10 +92,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1714" y="357" key="FileChooserDialogImpl" timestamp="1626733361992">
+    <state x="-1714" y="357" key="FileChooserDialogImpl" timestamp="1628136601794">
       <screen x="-2400" y="146" width="1920" height="1040" />
     </state>
-    <state x="-1714" y="357" key="FileChooserDialogImpl/-2400.146.1920.1040/0.0.1536.824@-2400.146.1920.1040" timestamp="1626733361992" />
+    <state x="-1714" y="357" key="FileChooserDialogImpl/-2400.146.1920.1040/0.0.1536.824@-2400.146.1920.1040" timestamp="1628136601794" />
     <state x="549" y="167" key="FileChooserDialogImpl/-2400.146.1920.1040/0.0.1536.824@0.0.1536.824" timestamp="1625698858034" />
     <state x="-2061" y="146" width="1454" height="870" key="MergeDialog" timestamp="1626539482007">
       <screen x="-2400" y="146" width="1920" height="1040" />
