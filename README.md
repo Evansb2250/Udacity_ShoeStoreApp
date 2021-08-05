@@ -50,28 +50,33 @@ Step by step explanation of how to get a dev environment running.
 
 ## Testing
 * Tested application using Pixel 3 XL API 29 emulator.
-* performed basic unit test to check if users can add and remove shoes from there repository.
+* performed unit test for
+   * LoginViewModels
+   * ShoeListViewModel
+   * ShoeFormViewModels 
 
-        @Test
-    * fun testGetShoe_notNull_newShoe()
-    * fun testGetShoe_Null_returnsNull()
-    * fun testAddShoe_ShoeInst_sizeOne() 
-    * fun testRemoveShoe_RemoveOne_ZeroShoesLeft()
-    * fun testRemovingShoes_TWO_OneShoeLeft()
-    * fun testRemovingShoesAndAdding_TWO_OneShoeLeft() 
-
+   (Known issues)
+   * The current structure doesn't make it easy to test the LoginViewModel, therefore there are only a few use case scenarios for the class
+   * The number counter for shoes in the inventory is stored as a static variable therefore additional functions had to be created to prevent unpredictable behavior.
 
 
 ### Break Down Tests
 
 Explain what each test does and why
 
+
 ```
 Examples here
 ```
 ## Project Instructions
-
-This section should contain all the student deliverables for this project.
+* The project delivers 
+    * an shoe inventory application that navigates across 5 different screens.
+    *  Each layout uses databinding.
+    *  A user can sign up and login to the application
+    *  the user information is retained as long as the activity for the screen is not destroyed.
+    *  users are presented with a welcome screen, instruction screen, shoe inventory screen and shoe detail screen.
+    *  users can add and remove shoes from the list.
+    
 
 ## Built With
 
